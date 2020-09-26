@@ -39,7 +39,10 @@ RUN apt-get update -y --fix-missing && apt-get upgrade -y && apt-get -y install 
     && make && make install \
     && pecl install redis apcu amqp igbinary \
     && docker-php-ext-enable redis swoole apcu amqp igbinary \
-    && wget https://install.phpcomposer.com/composer.phar -O /usr/local/bin/composer \
+    && php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');" \
+    && php composer-setup.php \
+    && php -r "unlink('composer-setup.php');" \
+    && mv composer.phar /usr/local/bin/composer \
     && chmod a+x /usr/local/bin/composer \
     && composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/ \
     && rm -rf /var/cache/apk/* /tmp/* /usr/share/man /var/lib/apt/lists/* \
