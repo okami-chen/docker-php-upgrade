@@ -1,16 +1,16 @@
-FROM php:7.4-fpm-buster
+FROM php:8.0-cli-buster
 COPY ./run.sh /opt/run.sh
 COPY ./sources.list /etc/apt/sources.list
 LABEL Author="Okami-Chen"
-LABEL Version="fpm-7.4"
-LABEL Description="PHP FPM 7.4"
+LABEL Version="php-8.x-cli"
+LABEL Description="PHP CLI 8.x"
 RUN apt-get update -y --fix-missing && apt-get upgrade -y && apt-get -y install --no-install-recommends \
     libfreetype6-dev libjpeg62-turbo-dev libpng-dev autoconf make zlib1g zlib1g-dev \
     libtool wget libxml2-dev bzip2 libsodium-dev libedit-dev libsqlite3-dev libssl-dev \
     libcurl4-openssl-dev libjpeg-dev libpng-dev libxpm-dev libfreetype6-dev libxslt1-dev \
     libbz2-dev bison libffi-dev libzip-dev re2c apt-utils libgtk2.0-dev cmake git \
     unzip supervisor libsnmp-dev libtidy-dev libldap2-dev libc-client-dev libkrb5-dev libicu-dev \
-    librabbitmq-dev librabbitmq4 libreadline6-dev cron vim \
+    librabbitmq-dev librabbitmq4 libreadline6-dev \
     && docker-php-ext-install -j$(nproc) intl \
     && docker-php-ext-install -j$(nproc) ldap \
     && docker-php-ext-install -j$(nproc) dba \
