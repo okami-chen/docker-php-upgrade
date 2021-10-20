@@ -27,7 +27,6 @@ RUN apt-get update -y --fix-missing && apt-get upgrade -y && apt-get -y install 
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-install -j$(nproc) soap \
     && docker-php-ext-install -j$(nproc) sockets \
-    && docker-php-ext-install -j$(nproc) xmlrpc \
     && docker-php-ext-install -j$(nproc) zip \
     && docker-php-ext-install -j$(nproc) bz2 \
     && cp /usr/bin/clear /usr/bin/cls \
