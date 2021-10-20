@@ -36,8 +36,8 @@ RUN apt-get update -y --fix-missing && apt-get upgrade -y && apt-get -y install 
     && mv swoole-src* swoole-src && cd swoole-src \
     && phpize && ./configure --enable-openssl --enable-sockets --enable-mysqlnd \
     && make && make install \
-    && pecl install redis apcu amqp igbinary \
-    && docker-php-ext-enable redis swoole apcu amqp igbinary \
+    && pecl install redis apcu igbinary \
+    && docker-php-ext-enable redis swoole apcu igbinary \
     && php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');" \
     && php composer-setup.php \
     && php -r "unlink('composer-setup.php');" \
