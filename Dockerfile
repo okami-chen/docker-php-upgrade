@@ -4,7 +4,15 @@ COPY ./sources.list /etc/apt/sources.list
 LABEL Author="Okami-Chen"
 LABEL Version="php-8.x-cli"
 LABEL Description="PHP CLI 8.x"
-RUN apt-get update -y --fix-missing && apt-get upgrade -y && apt-get -y install --no-install-recommends \
+ARG timezone
+
+ENV TIMEZONE=${timezone:-"Asia/Shanghai"} \
+    APP_ENV=production \
+    LANG=C.UTF-8
+
+RUN ln -sf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime \
+    && echo "${TIMEZONE}" > /etc/timezone \
+    && apt-get update -y --fix-missing && apt-get upgrade -y && apt-get -y install --no-install-recommends \
     libfreetype6-dev libjpeg62-turbo-dev libpng-dev autoconf make zlib1g zlib1g-dev \
     libtool wget libxml2-dev bzip2 libsodium-dev libedit-dev libsqlite3-dev libssl-dev \
     libcurl4-openssl-dev libjpeg-dev libpng-dev libxpm-dev libfreetype6-dev libxslt1-dev \
