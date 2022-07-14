@@ -16,12 +16,12 @@ RUN chmod +x /usr/local/bin/install-php-extensions \
 && install-php-extensions intl ldap dba shmop calendar exif gettext pcntl sysvsem sysvshm \
 pdo_mysql mysqli bcmath gd soap sockets zip bz2 redis \
 && cp /usr/bin/clear /usr/bin/cls && cd /tmp \
-# && wget https://github.com/swoole/swoole-src/archive/master.tar.gz \
-# && tar zxvf master.tar.gz \
-# && mv swoole-src* swoole-src && cd swoole-src \
-# && phpize && ./configure --enable-openssl --enable-sockets --enable-mysqlnd \
-# && make && make install \
-# && docker-php-ext-enable swoole \
+&& curl https://github.com/swoole/swoole-src/archive/master.tar.gz -O master.tar.gz \
+&& tar zxvf master.tar.gz \
+&& mv swoole-src* swoole-src && cd swoole-src \
+&& phpize && ./configure --enable-openssl --enable-sockets --enable-mysqlnd \
+&& make && make install \
+&& docker-php-ext-enable swoole \
 && php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');" \
 && php composer-setup.php \
 && php -r "unlink('composer-setup.php');" \
