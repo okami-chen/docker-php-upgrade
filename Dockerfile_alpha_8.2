@@ -15,7 +15,7 @@ ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/do
 RUN chmod +x /usr/local/bin/install-php-extensions \
 && apt-get update -y --fix-missing && apt-get upgrade -y && apt-get -y install --no-install-recommends wget libssl-dev libcurl4-openssl-dev \
 && install-php-extensions intl ldap dba shmop calendar exif gettext pcntl sysvsem sysvshm \
-pdo_mysql mysqli bcmath gd soap sockets zip bz2 redis swoole \
+pdo_mysql mysqli bcmath gd soap sockets zip bz2 redis \
 && cp /usr/bin/clear /usr/bin/cls && cd /tmp \
 # && wget https://github.com/swoole/swoole-src/archive/master.tar.gz \
 # && tar zxvf master.tar.gz \
