@@ -1,6 +1,6 @@
 FROM php:8.0-cli-buster
 COPY ./run.sh /opt/run.sh
-COPY ./sources.list /etc/apt/sources.list
+# COPY ./sources.list /etc/apt/sources.list
 LABEL Author="Okami-Chen"
 LABEL Version="php-8.x-cli"
 LABEL Description="PHP CLI 8.x"
