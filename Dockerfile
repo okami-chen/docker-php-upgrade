@@ -1,4 +1,4 @@
-FROM php:8.0-cli-buster
+FROM php:8.0-fpm-buster
 COPY ./run.sh /opt/run.sh
 # COPY ./sources.list /etc/apt/sources.list
 LABEL Author="Okami-Chen"
