@@ -13,7 +13,7 @@ ENV TIMEZONE=${timezone:-"Asia/Shanghai"} \
 ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/
 
 RUN chmod +x /usr/local/bin/install-php-extensions \
-&& apt-get update -y --fix-missing && apt-get upgrade -y && apt-get -y install --no-install-recommends wget \
+&& apt-get update -y --fix-missing && apt-get upgrade -y && apt-get -y install --no-install-recommends wget libssl-dev libcurl4-openssl-dev \
 && install-php-extensions intl ldap dba shmop calendar exif gettext pcntl sysvsem sysvshm \
 pdo_mysql mysqli bcmath gd soap sockets zip bz2 redis \
 && cp /usr/bin/clear /usr/bin/cls && cd /tmp \
