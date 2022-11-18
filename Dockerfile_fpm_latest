@@ -1,4 +1,4 @@
-FROM php:fpm-buster
+FROM php:fpm-alpine
 # COPY ./run.sh /opt/run.sh
 # COPY ./sources.list /etc/apt/sources.list
 LABEL Author="Okami-Chen"
