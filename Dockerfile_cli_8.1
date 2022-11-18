@@ -11,6 +11,7 @@ ENV TIMEZONE=${timezone:-"Asia/Shanghai"} \
     LANG=C.UTF-8
 
 RUN ln -sf /usr/share/zoneinfo/${TIMEZONE} /etc/localtime \
+    && apk update && apk add apt-get \
     && echo "${TIMEZONE}" > /etc/timezone \
     && apt-get update -y --fix-missing && apt-get upgrade -y && apt-get -y install --no-install-recommends \
     libfreetype6-dev libjpeg62-turbo-dev libpng-dev autoconf make zlib1g zlib1g-dev \
