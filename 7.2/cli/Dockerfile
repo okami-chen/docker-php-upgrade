@@ -15,5 +15,6 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
 && install-php-extensions intl ldap dba shmop calendar exif gettext pcntl sysvsem sysvshm sysvmsg \
 pdo_mysql mysqli bcmath sockets zip bz2 mcrypt amqp redis swoole-^4.8 @composer \
 && composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/ \
+&& apk update && apk upgrade && apk add --no-cache bash bash-doc bash-completion supervisor \
 && rm -rf /var/cache/apk/* /tmp/* /usr/share/man /var/lib/apt/lists/* \
-&& chmod +x /opt/run.sh
+&& chmod +x /opt/*.sh
