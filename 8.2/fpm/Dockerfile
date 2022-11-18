@@ -1,0 +1,19 @@
+FROM php:8.2-rc-fpm-alpine
+
+COPY ./run.sh /opt/run.sh
+COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
+
+ENV TIMEZONE=${timezone:-"Asia/Shanghai"} \
+    APP_ENV=production \
+    LANG=C.UTF-8 \
+    COMPOSER_ALLOW_SUPERUSER=1
+
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories && apk update \
+&& apk add -U tzdata \
+&& cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo "Asia/Shanghai" > /etc/timezone \
+&& apk del tzdata \
+&& install-php-extensions intl ldap dba shmop calendar exif gettext pcntl sysvsem sysvshm sysvmsg \
+pdo_mysql mysqli bcmath sockets zip bz2 mcrypt amqp redis swoole @composer \
+&& composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/ \
+&& rm -rf /var/cache/apk/* /tmp/* /usr/share/man /var/lib/apt/lists/* \
+&& chmod +x /opt/run.sh
