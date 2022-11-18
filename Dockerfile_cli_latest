@@ -1,4 +1,4 @@
-FROM php:cli-buster
+FROM php:cli-alpine
 # COPY ./run.sh /opt/run.sh
 # COPY ./sources.list /etc/apt/sources.list
 LABEL Author="Okami-Chen"
