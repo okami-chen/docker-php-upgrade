@@ -1,4 +1,4 @@
-FROM registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:cli-8.1.12
+FROM registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:cli-8.1
 
 COPY ./conf/octane/start.sh /opt/start.sh
 COPY ./conf/octane/nginx.conf /run/nginx/nginx.conf
