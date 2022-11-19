@@ -55,8 +55,8 @@ class Docker
             $this->cmds[] = 'docker tag ' . $baseImage . ' ' . $namespace . ':' . $type . '-' . $ver;
             $this->cmds[] = 'docker push ' . $namespace . ':' . $type . '-' . $version;
             $this->cmds[] = 'docker push ' . $namespace . ':' . $type . '-' . $ver;
-            //$this->cmds[] = 'docker rmi ' . $namespace . ':' . $type . '-' . $version;
-            //$this->cmds[] = 'docker rmi ' . $namespace . ':' . $type . '-' . $ver;
+            $this->cmds[] = 'docker rmi ' . $namespace . ':' . $type . '-' . $version;
+            $this->cmds[] = 'docker rmi ' . $namespace . ':' . $type . '-' . $ver;
         }
         $this->cmds[] = 'docker rmi php:' . $a . '.' . $b . '-' . $type . '-alpine';
         $this->cmds[] = '';
