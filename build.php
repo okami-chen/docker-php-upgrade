@@ -44,6 +44,7 @@ class Docker
             $this->cmds[] = 'docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:' . $type . '-' . $version;
             $this->cmds[] = 'docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:' . $type . '-' . $ver;
             $this->cmds[] = 'docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:' . $type . '-' . $ver;
+            $this->cmds[] = 'docker rmi php:' . $a . '.' . $b . '-' . $type . '-alpine';
         }
     }
 }
