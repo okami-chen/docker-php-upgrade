@@ -1,6 +1,6 @@
 FROM php:7.4-cli-alpine
 
-COPY ./run.sh /opt/run.sh
+
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 
 ENV TIMEZONE=${timezone:-"Asia/Shanghai"} \
