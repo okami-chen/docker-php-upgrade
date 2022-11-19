@@ -8,6 +8,9 @@ class Docker
 {
     protected array $cmds = [];
 
+    protected string $namespace = 'registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade';
+
+
     public function build(array|string $version)
     {
         if (!is_array($version)) {
@@ -37,13 +40,20 @@ class Docker
     {
         list($a, $b) = explode('.', $ver);
         $version = $a . '.' . $b;
-        $this->cmds[] = 'docker build -f ' . $version . '/' . $type . '/Dockerfile -t registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:cli-' . $version . ' .';
-        $this->cmds[] = 'docker tag registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:' . $type . '-' . $version . ' registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:' . $type . '-' . $ver;
+        $this->cmds[] = 'docker build -f ' . $version . '/' . $type . '/Dockerfile -t ' . $this->namespace . ':cli-' . $version . ' .';
+        $image = $this->namespace . ':' . $type . '-' . $version;
+        $this->cmds[] = 'docker tag ' . $image . ' ' . $this->namespace . ':' . $type . '-' . $ver;
+        $this->cmds[] = 'docker tag ' . $image . ' sync402/docker-php-upgrade:' . $type . '-' . $ver;
+        $this->cmds[] = 'docker tag ' . $image . ' sync402/docker-php-upgrade:' . $type . '-' . $version;
         if ($push) {
-            $this->cmds[] = 'docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:' . $type . '-' . $version;
-            $this->cmds[] = 'docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:' . $type . '-' . $version;
-            $this->cmds[] = 'docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:' . $type . '-' . $ver;
-            $this->cmds[] = 'docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:' . $type . '-' . $ver;
+            $this->cmds[] = 'docker push ' . $this->namespace . ':' . $type . '-' . $version;
+            $this->cmds[] = 'docker rmi ' . $this->namespace . ':' . $type . '-' . $version;
+            $this->cmds[] = 'docker push ' . $this->namespace . ':' . $type . '-' . $ver;
+            $this->cmds[] = 'docker rmi ' . $this->namespace . ':' . $type . '-' . $ver;
+            $this->cmds[] = 'docker push sync402/docker-php-upgrade:' . $type . '-' . $ver;
+            $this->cmds[] = 'docker rmi sync402/docker-php-upgrade:' . $type . '-' . $ver;
+            $this->cmds[] = 'docker push sync402/docker-php-upgrade:' . $type . '-' . $version;
+            $this->cmds[] = 'docker rmi sync402/docker-php-upgrade:' . $type . '-' . $version;
             $this->cmds[] = 'docker rmi php:' . $a . '.' . $b . '-' . $type . '-alpine';
         }
     }

@@ -3,15 +3,27 @@ docker tag php:8.2.0RC6-cli-alpine php:8.2-cli-alpine
 docker rmi 8.2.0RC6-cli-alpine
 docker build -f 8.2/cli/Dockerfile -t registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:cli-8.2 .
 docker tag registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:cli-8.2 registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:cli-8.2.0RC6
+docker tag registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:cli-8.2 sync402/docker-php-upgrade:cli-8.2.0RC6
+docker tag registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:cli-8.2 sync402/docker-php-upgrade:cli-8.2
 docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:cli-8.2
 docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:cli-8.2
 docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:cli-8.2.0RC6
 docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:cli-8.2.0RC6
+docker push sync402/docker-php-upgrade:cli-8.2.0RC6
+docker rmi sync402/docker-php-upgrade:cli-8.2.0RC6
+docker push sync402/docker-php-upgrade:cli-8.2
+docker rmi sync402/docker-php-upgrade:cli-8.2
 docker rmi php:8.2-cli-alpine
 docker build -f 8.2/fpm/Dockerfile -t registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:cli-8.2 .
 docker tag registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:fpm-8.2 registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:fpm-8.2.0RC6
+docker tag registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:fpm-8.2 sync402/docker-php-upgrade:fpm-8.2.0RC6
+docker tag registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:fpm-8.2 sync402/docker-php-upgrade:fpm-8.2
 docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:fpm-8.2
 docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:fpm-8.2
 docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:fpm-8.2.0RC6
 docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:fpm-8.2.0RC6
+docker push sync402/docker-php-upgrade:fpm-8.2.0RC6
+docker rmi sync402/docker-php-upgrade:fpm-8.2.0RC6
+docker push sync402/docker-php-upgrade:fpm-8.2
+docker rmi sync402/docker-php-upgrade:fpm-8.2
 docker rmi php:8.2-fpm-alpine
