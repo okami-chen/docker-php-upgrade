@@ -1,0 +1,17 @@
+FROM docker-php-upgrade:cli-7.2
+
+COPY ./conf/octane/start.sh /opt/start.sh
+COPY ./conf/octane/nginx.conf /run/nginx/nginx.conf
+COPY ./conf/octane/octane.ini /etc/supervisor.d/octane.ini
+
+WORKDIR /tmp
+
+RUN apk update && apk --no-cache add nginx && mkdir -p /run/nginx \
+&& rm -rf /var/cache/apk/* /tmp/* /usr/share/man /var/lib/apt/lists/* \
+&& chmod +x /opt/start.sh
+
+EXPOSE 80
+
+CMD ["/opt/start.sh"]
+
+

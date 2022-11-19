@@ -30,13 +30,17 @@ class Docker
 
             $this->pullImage($ver, 'cli');
             $this->buildImage($ver, 'cli');
+            $this->buildImage($ver, 'cli-pure');
+            $this->buildImage($ver, 'cli-swoole');
+
             $this->pullImage($ver, 'fpm');
             $this->buildImage($ver, 'fpm');
+            $this->buildImage($ver, 'fpm-pure');
 
-            if (in_array($ver, $this->expand)) {
-                $this->buildImage($ver, 'nginx');
-                $this->buildImage($ver, 'octane');
-            }
+            $this->buildImage($ver, 'nginx');
+            $this->buildImage($ver, 'nginx-pure');
+            $this->buildImage($ver, 'octane');
+            $this->buildImage($ver, 'octane-pure');
 
             $data = implode("\r\n", $this->cmds);
             list($a, $b) = explode('.', $ver);
@@ -50,7 +54,13 @@ class Docker
         $this->cmds[] = 'docker pull php:' . $ver . '-' . $type . '-alpine';
         list($a, $b) = explode('.', $ver);
         $this->cmds[] = 'docker tag php:' . $ver . '-' . $type . '-alpine php:' . $a . '.' . $b . '-' . $type . '-alpine';
-//        $this->cmds[] = 'docker rmi php:' . $ver . '-' . $type . '-alpine';
+        $this->cmds[] = '';
+    }
+
+    protected function cleanImage(string $ver, $type = 'cli')
+    {
+        list($a, $b) = explode('.', $ver);
+        $this->cmds[] = 'docker rmi php:' . $a . '.' . $b . '-' . $type . '-alpine';
     }
 
     protected function buildImage($ver, $type = 'cli', $push = true)
@@ -58,7 +68,6 @@ class Docker
         list($a, $b) = explode('.', $ver);
         $version = $a . '.' . $b;
         $this->cmds[] = 'docker build -f ' . $version . '/' . $type . '/Dockerfile -t ' . $this->namespace . ':' . $type . '-' . $version . ' .';
-        $this->cmds[] = '';
 
         foreach ($this->namespaces as $namespace) {
             $baseImage = $this->namespace . ':' . $type . '-' . $version;
@@ -69,7 +78,6 @@ class Docker
             $this->cmds[] = 'docker rmi ' . $namespace . ':' . $type . '-' . $version;
             $this->cmds[] = 'docker rmi ' . $namespace . ':' . $type . '-' . $ver;
         }
-        $this->cmds[] = 'docker rmi php:' . $a . '.' . $b . '-' . $type . '-alpine';
         $this->cmds[] = '';
     }
 }
