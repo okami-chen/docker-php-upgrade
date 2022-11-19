@@ -1,4 +1,4 @@
-FROM docker-php-upgrade:fpm-8.1-pure
+FROM docker-php-upgrade:fpm-8.0-pure
 
 COPY ./conf/nginx/start.sh /opt/start.sh
 COPY ./conf/nginx/nginx.conf /run/nginx/nginx.conf

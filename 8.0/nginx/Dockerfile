@@ -1,8 +1,7 @@
-FROM docker-php-upgrade:cli-8.0-swoole
+FROM docker-php-upgrade:fpm-8.0
 
-COPY ./conf/octane/start.sh /opt/start.sh
-COPY ./conf/octane/nginx.conf /run/nginx/nginx.conf
-COPY ./conf/octane/octane.ini /etc/supervisor.d/octane.ini
+COPY ./conf/nginx/start.sh /opt/start.sh
+COPY ./conf/nginx/nginx.conf /run/nginx/nginx.conf
 
 WORKDIR /tmp
 
