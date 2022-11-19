@@ -1,4 +1,4 @@
-FROM registry.cn-hangzhou.aliyuncs.com/okami/docker-php:fpm-8.1.12
+FROM registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:fpm-8.1.12
 
 COPY ./start.sh /opt/start.sh
 COPY ./nginx.conf /run/nginx/nginx.conf
