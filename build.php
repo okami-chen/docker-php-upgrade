@@ -39,6 +39,7 @@ class Docker
         list($a, $b) = explode('.', $ver);
         $this->cmds[] = 'docker tag php:' . $ver . '-cli-alpine php:' . $a . '.' . $b . '-cli-alpine';
         $this->cmds[] = 'docker rmi php:' . $ver . '-cli-alpine';
+        $this->cmds[] = '';
     }
 
     protected function buildImage($ver, $type = 'cli', $push = true)
@@ -46,6 +47,7 @@ class Docker
         list($a, $b) = explode('.', $ver);
         $version = $a . '.' . $b;
         $this->cmds[] = 'docker build -f ' . $version . '/' . $type . '/Dockerfile -t ' . $this->namespace . ':' . $type . '-' . $version . ' .';
+        $this->cmds[] = '';
 
         foreach ($this->namespaces as $namespace) {
             $baseImage = $this->namespace . ':' . $type . '-' . $version;
@@ -53,9 +55,8 @@ class Docker
             $this->cmds[] = 'docker tag ' . $baseImage . ' ' . $namespace . ':' . $type . '-' . $ver;
             $this->cmds[] = 'docker push ' . $namespace . ':' . $type . '-' . $version;
             $this->cmds[] = 'docker push ' . $namespace . ':' . $type . '-' . $ver;
-            $this->cmds[] = 'docker rmi ' . $namespace . ':' . $type . '-' . $version;
-            $this->cmds[] = 'docker rmi ' . $namespace . ':' . $type . '-' . $ver;
-            $this->cmds[] = '';
+            //$this->cmds[] = 'docker rmi ' . $namespace . ':' . $type . '-' . $version;
+            //$this->cmds[] = 'docker rmi ' . $namespace . ':' . $type . '-' . $ver;
         }
         $this->cmds[] = 'docker rmi php:' . $a . '.' . $b . '-' . $type . '-alpine';
         $this->cmds[] = '';
