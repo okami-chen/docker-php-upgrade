@@ -23,8 +23,9 @@ class Docker
         }
 
         foreach ($version as $ver) {
-            $this->pullImage($ver);
+            $this->pullImage($ver, 'cli');
             $this->buildImage($ver, 'cli');
+            $this->pullImage($ver, 'fpm');
             $this->buildImage($ver, 'fpm');
             $data = implode("\r\n", $this->cmds);
             list($a, $b) = explode('.', $ver);
@@ -33,12 +34,12 @@ class Docker
         }
     }
 
-    protected function pullImage(string $ver)
+    protected function pullImage(string $ver, $type = 'cli')
     {
-        $this->cmds[] = 'docker pull php:' . $ver . '-cli-alpine';
+        $this->cmds[] = 'docker pull php:' . $ver . '-' . $type . '-alpine';
         list($a, $b) = explode('.', $ver);
-        $this->cmds[] = 'docker tag php:' . $ver . '-cli-alpine php:' . $a . '.' . $b . '-cli-alpine';
-        $this->cmds[] = 'docker rmi php:' . $ver . '-cli-alpine';
+        $this->cmds[] = 'docker tag php:' . $ver . '-' . $type . '-alpine php:' . $a . '.' . $b . '-' . $type . '-alpine';
+        $this->cmds[] = 'docker rmi php:' . $ver . '-' . $type . '-alpine';
         $this->cmds[] = '';
     }
 
