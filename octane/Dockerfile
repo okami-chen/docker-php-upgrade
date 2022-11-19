@@ -1,8 +1,8 @@
 FROM registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:fpm-8.1.12
 
-COPY ./start.sh /opt/start.sh
-COPY ./nginx.conf /run/nginx/nginx.conf
-COPY ./octane.ini /etc/supervisor.d/octane.ini
+COPY ./conf/octane/start.sh /opt/start.sh
+COPY ./conf/octane/nginx.conf /run/nginx/nginx.conf
+COPY ./conf/octane/octane.ini /etc/supervisor.d/octane.ini
 
 WORKDIR /tmp
 

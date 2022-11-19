@@ -1,7 +1,7 @@
 FROM registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:fpm-8.1.12
 
-COPY ./start.sh /opt/start.sh
-COPY ./nginx.conf /run/nginx/nginx.conf
+COPY ./conf/nginx/start.sh /opt/start.sh
+COPY ./conf/nginx/nginx.conf /run/nginx/nginx.conf
 
 WORKDIR /tmp
 
