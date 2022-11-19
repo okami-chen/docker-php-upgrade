@@ -1,6 +1,5 @@
 docker pull php:7.2.34-cli-alpine
 docker tag php:7.2.34-cli-alpine php:7.2-cli-alpine
-docker rmi php:7.2.34-cli-alpine
 docker build -f 7.2/cli/Dockerfile -t docker-php-upgrade:cli-7.2 .
 
 docker tag docker-php-upgrade:cli-7.2 registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:cli-7.2
@@ -19,7 +18,6 @@ docker rmi php:7.2-cli-alpine
 
 docker pull php:7.2.34-fpm-alpine
 docker tag php:7.2.34-fpm-alpine php:7.2-fpm-alpine
-docker rmi php:7.2.34-fpm-alpine
 docker build -f 7.2/fpm/Dockerfile -t docker-php-upgrade:fpm-7.2 .
 
 docker tag docker-php-upgrade:fpm-7.2 registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:fpm-7.2
