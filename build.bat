@@ -55,7 +55,6 @@ docker build -f 7.4/cli/Dockerfile -t registry.cn-hangzhou.aliyuncs.com/okami/do
 docker build -f 8.0/cli/Dockerfile -t registry.cn-hangzhou.aliyuncs.com/okami/docker-php:cli-8.0 .
 docker build -f 8.1/cli/Dockerfile -t registry.cn-hangzhou.aliyuncs.com/okami/docker-php:cli-8.1 .
 docker build -f 8.2/cli/Dockerfile -t registry.cn-hangzhou.aliyuncs.com/okami/docker-php:cli-8.2 .
-
 docker build -f 7.2/fpm/Dockerfile -t registry.cn-hangzhou.aliyuncs.com/okami/docker-php:fpm-7.2 .
 docker build -f 7.4/fpm/Dockerfile -t registry.cn-hangzhou.aliyuncs.com/okami/docker-php:fpm-7.4 .
 docker build -f 8.0/fpm/Dockerfile -t registry.cn-hangzhou.aliyuncs.com/okami/docker-php:fpm-8.0 .
@@ -67,7 +66,6 @@ docker tag registry.cn-hangzhou.aliyuncs.com/okami/docker-php:cli-7.4 registry.c
 docker tag registry.cn-hangzhou.aliyuncs.com/okami/docker-php:cli-8.0 registry.cn-hangzhou.aliyuncs.com/okami/docker-php:cli-%php80%
 docker tag registry.cn-hangzhou.aliyuncs.com/okami/docker-php:cli-8.1 registry.cn-hangzhou.aliyuncs.com/okami/docker-php:cli-%php81%
 docker tag registry.cn-hangzhou.aliyuncs.com/okami/docker-php:cli-8.2 registry.cn-hangzhou.aliyuncs.com/okami/docker-php:cli-%php82%
-
 docker tag registry.cn-hangzhou.aliyuncs.com/okami/docker-php:fpm-7.2 registry.cn-hangzhou.aliyuncs.com/okami/docker-php:fpm-%php72%
 docker tag registry.cn-hangzhou.aliyuncs.com/okami/docker-php:fpm-7.4 registry.cn-hangzhou.aliyuncs.com/okami/docker-php:fpm-%php74%
 docker tag registry.cn-hangzhou.aliyuncs.com/okami/docker-php:fpm-8.0 registry.cn-hangzhou.aliyuncs.com/okami/docker-php:fpm-%php80%
@@ -96,6 +94,18 @@ docker push registry.cn-hangzhou.aliyuncs.com/okami/docker-php:fpm-%php80%
 docker push registry.cn-hangzhou.aliyuncs.com/okami/docker-php:fpm-%php81%
 docker push registry.cn-hangzhou.aliyuncs.com/okami/docker-php:fpm-%php82%
 
+
+cd E:\service\docker-php\octane
+docker build -t registry.cn-hangzhou.aliyuncs.com/okami/docker-php:octane-8.1 .
+docker build -t registry.cn-hangzhou.aliyuncs.com/okami/docker-php:octane-%php81% .
+docker push registry.cn-hangzhou.aliyuncs.com/okami/docker-php:octane-8.1
+docker push registry.cn-hangzhou.aliyuncs.com/okami/docker-php:octane-%php81%
+
+cd E:\service\docker-php\nginx
+docker build -t registry.cn-hangzhou.aliyuncs.com/okami/docker-php:nginx-8.1 .
+docker build -t registry.cn-hangzhou.aliyuncs.com/okami/docker-php:nginx-%php81% .
+docker push registry.cn-hangzhou.aliyuncs.com/okami/docker-php:nginx-8.1
+docker push registry.cn-hangzhou.aliyuncs.com/okami/docker-php:nginx-%php81%
 
 
 
