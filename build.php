@@ -15,6 +15,10 @@ class Docker
         'sync402/docker-php-upgrade'
     ];
 
+    protected array $expand = [
+        '8.0.25', '8.1.12', '8.2.0RC6'
+    ];
+
 
     public function build(array|string $version)
     {
@@ -23,10 +27,17 @@ class Docker
         }
 
         foreach ($version as $ver) {
+
             $this->pullImage($ver, 'cli');
             $this->buildImage($ver, 'cli');
             $this->pullImage($ver, 'fpm');
             $this->buildImage($ver, 'fpm');
+
+            if (in_array($ver, $this->expand)) {
+                $this->buildImage($ver, 'nginx');
+                $this->buildImage($ver, 'octane');
+            }
+
             $data = implode("\r\n", $this->cmds);
             list($a, $b) = explode('.', $ver);
             file_put_contents(__DIR__ . '/build_' . $a . '.' . $b . '.bat', $data);
