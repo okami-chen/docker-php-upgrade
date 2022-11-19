@@ -8,7 +8,12 @@ class Docker
 {
     protected array $cmds = [];
 
-    protected string $namespace = 'registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade';
+    protected string $namespace = 'docker-php-upgrade';
+
+    protected array $namespaces = [
+        'registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade',
+        'sync402/docker-php-upgrade'
+    ];
 
 
     public function build(array|string $version)
@@ -40,22 +45,20 @@ class Docker
     {
         list($a, $b) = explode('.', $ver);
         $version = $a . '.' . $b;
-        $this->cmds[] = 'docker build -f ' . $version . '/' . $type . '/Dockerfile -t ' . $this->namespace . ':cli-' . $version . ' .';
-        $image = $this->namespace . ':' . $type . '-' . $version;
-        $this->cmds[] = 'docker tag ' . $image . ' ' . $this->namespace . ':' . $type . '-' . $ver;
-        $this->cmds[] = 'docker tag ' . $image . ' sync402/docker-php-upgrade:' . $type . '-' . $ver;
-        $this->cmds[] = 'docker tag ' . $image . ' sync402/docker-php-upgrade:' . $type . '-' . $version;
-        if ($push) {
-            $this->cmds[] = 'docker push ' . $this->namespace . ':' . $type . '-' . $version;
-            $this->cmds[] = 'docker rmi ' . $this->namespace . ':' . $type . '-' . $version;
-            $this->cmds[] = 'docker push ' . $this->namespace . ':' . $type . '-' . $ver;
-            $this->cmds[] = 'docker rmi ' . $this->namespace . ':' . $type . '-' . $ver;
-            $this->cmds[] = 'docker push sync402/docker-php-upgrade:' . $type . '-' . $ver;
-            $this->cmds[] = 'docker rmi sync402/docker-php-upgrade:' . $type . '-' . $ver;
-            $this->cmds[] = 'docker push sync402/docker-php-upgrade:' . $type . '-' . $version;
-            $this->cmds[] = 'docker rmi sync402/docker-php-upgrade:' . $type . '-' . $version;
-            $this->cmds[] = 'docker rmi php:' . $a . '.' . $b . '-' . $type . '-alpine';
+        $this->cmds[] = 'docker build -f ' . $version . '/' . $type . '/Dockerfile -t ' . $this->namespace . ':' . $type . '-' . $version . ' .';
+
+        foreach ($this->namespaces as $namespace) {
+            $baseImage = $this->namespace . ':' . $type . '-' . $version;
+            $this->cmds[] = 'docker tag ' . $baseImage . ' ' . $namespace . ':' . $type . '-' . $version;
+            $this->cmds[] = 'docker tag ' . $baseImage . ' ' . $namespace . ':' . $type . '-' . $ver;
+            $this->cmds[] = 'docker push ' . $namespace . ':' . $type . '-' . $version;
+            $this->cmds[] = 'docker push ' . $namespace . ':' . $type . '-' . $ver;
+            $this->cmds[] = 'docker rmi ' . $namespace . ':' . $type . '-' . $version;
+            $this->cmds[] = 'docker rmi ' . $namespace . ':' . $type . '-' . $ver;
+            $this->cmds[] = '';
         }
+        $this->cmds[] = 'docker rmi php:' . $a . '.' . $b . '-' . $type . '-alpine';
+        $this->cmds[] = '';
     }
 }
 
