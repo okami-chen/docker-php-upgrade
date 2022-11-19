@@ -1,6 +1,6 @@
 docker pull php:8.2.0RC6-cli-alpine
 docker tag php:8.2.0RC6-cli-alpine php:8.2-cli-alpine
-docker rmi 8.2.0RC6-cli-alpine
+docker rmi php:8.2.0RC6-cli-alpine
 docker build -f 8.2/cli/Dockerfile -t docker-php-upgrade:cli-8.2 .
 docker tag docker-php-upgrade:cli-8.2 registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:cli-8.2
 docker tag docker-php-upgrade:cli-8.2 registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:cli-8.2.0RC6
