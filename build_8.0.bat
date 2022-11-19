@@ -59,7 +59,7 @@ docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:octane-8.
 docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:octane-8.0
 docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:octane-8.0.25
 docker tag docker-php-upgrade:octane-8.0 sync402/docker-php-upgrade:octane-8.0
-docker tag docker-php-upgrade:octane-8.0 sync402/docker-php-upgrade:octane-8.0.25
+docker tag docker-php-upgrade:octane-8.0 sync402/docker-php-upgrade: -8.0.25
 docker push sync402/docker-php-upgrade:octane-8.0
 docker push sync402/docker-php-upgrade:octane-8.0.25
 docker rmi sync402/docker-php-upgrade:octane-8.0
