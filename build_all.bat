@@ -10,6 +10,8 @@ call build_8.1.bat
 call build_8.0.bat
 call build_7.4.bat
 call build_7.2.bat
+call build_octane.bat
+call build_nginx.bat
 
 
 
