@@ -40,7 +40,6 @@ class Docker
         list($a, $b) = explode('.', $ver);
         $this->cmds[] = 'docker tag php:' . $ver . '-' . $type . '-alpine php:' . $a . '.' . $b . '-' . $type . '-alpine';
         $this->cmds[] = 'docker rmi php:' . $ver . '-' . $type . '-alpine';
-        $this->cmds[] = '';
     }
 
     protected function buildImage($ver, $type = 'cli', $push = true)
