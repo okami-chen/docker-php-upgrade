@@ -5,13 +5,11 @@
  set php81=8.1.12
  set php82=8.2.0RC6
 )
-call build_8.2.bat
-call build_8.1.bat
-call build_8.0.bat
-call build_7.4.bat
-call build_7.2.bat
-call build_octane.bat
-call build_nginx.bat
+start cmd /k "E:\service\docker-php\build_8.2.bat"
+start cmd /k "E:\service\docker-php\build_8.1.bat"
+start cmd /k "E:\service\docker-php\build_8.0.bat"
+start cmd /k "E:\service\docker-php\build_7.4.bat"
+start cmd /k "E:\service\docker-php\build_7.2.bat"
 
 
 
