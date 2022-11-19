@@ -41,7 +41,9 @@ class Docker
         $this->cmds[] = 'docker tag registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:' . $type . '-' . $version . ' registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:' . $type . '-' . $ver;
         if ($push) {
             $this->cmds[] = 'docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:' . $type . '-' . $version;
+            $this->cmds[] = 'docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:' . $type . '-' . $version;
             $this->cmds[] = 'docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:' . $type . '-' . $ver;
+            $this->cmds[] = 'docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade:' . $type . '-' . $ver;
         }
     }
 }
