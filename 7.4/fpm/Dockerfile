@@ -1,6 +1,5 @@
 FROM php:7.4-fpm-alpine
 
-
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 
 ENV TIMEZONE=${timezone:-"Asia/Shanghai"} \
@@ -17,5 +16,4 @@ pdo_mysql mysqli bcmath sockets zip bz2 mcrypt amqp redis swoole mongodb-^4.8 @c
 && composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/ \
 && apk update && apk upgrade && apk add --no-cache bash bash-doc bash-completion supervisor \
 && rm -rf /var/cache/apk/* /tmp/* /usr/share/man /var/lib/apt/lists/* \
-&& mkdir -p /etc/supervisor.d/ && cat /usr/local/etc/php/php.ini-production > /usr/local/etc/php/php.ini \
-&& chmod +x /opt/*.sh
+&& mkdir -p /etc/supervisor.d/ && cat /usr/local/etc/php/php.ini-production > /usr/local/etc/php/php.ini

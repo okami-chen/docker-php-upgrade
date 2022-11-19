@@ -17,5 +17,4 @@ pdo_mysql mysqli bcmath sockets zip bz2 mcrypt amqp redis swoole mongodb @compos
 && composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/ \
 && apk update && apk upgrade && apk add --no-cache bash bash-doc bash-completion supervisor \
 && rm -rf /var/cache/apk/* /tmp/* /usr/share/man /var/lib/apt/lists/* \
-&& mkdir -p /etc/supervisor.d/ && cat /usr/local/etc/php/php.ini-production > /usr/local/etc/php/php.ini \
-&& chmod +x /opt/*.sh
+&& mkdir -p /etc/supervisor.d/ && cat /usr/local/etc/php/php.ini-production > /usr/local/etc/php/php.ini
