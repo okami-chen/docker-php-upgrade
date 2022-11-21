@@ -1,4 +1,4 @@
-FROM sync402/docker-php:cli-swoole-5.6
+registry.cn-shanghai.aliyuncs.com/okami/sync402/docker-php:cli-swoole-5.6
 
 COPY ./conf/octane/start.sh /opt/start.sh
 COPY ./conf/octane/nginx.conf /run/nginx/nginx.conf

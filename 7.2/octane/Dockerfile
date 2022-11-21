@@ -1,4 +1,4 @@
-FROM sync402/docker-php:cli-7.2
+registry.cn-shanghai.aliyuncs.com/okami/sync402/docker-php:cli-7.2
 
 COPY ./conf/octane/start.sh /opt/start.sh
 COPY ./conf/octane/nginx.conf /run/nginx/nginx.conf

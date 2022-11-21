@@ -6,12 +6,19 @@ $version = [
 
 class Docker
 {
-    protected array $cmds = [];
+    protected array $cmds = [
+    ];
+
+    protected array $images = [
+        'docker login --username=ap3747a7y@aliyun.com --password=dehua2011 registry.cn-shanghai.aliyuncs.com',
+        'docker login --username=sync402 --password=dehua2011',
+        ''
+    ];
 
     protected string $namespace = 'sync402/docker-php';
 
     protected array $namespaces = [
-        'registry.cn-shanghai.aliyuncs.com/okami/sync402/docker-php',
+        'registry.cn-shanghai.aliyuncs.com/okami/docker-php',
     ];
 
     /**
@@ -70,18 +77,19 @@ class Docker
 
             $data = implode("\r\n", $this->cmds);
             file_put_contents(__DIR__ . '/build_' . $this->bigVersion . '.' . $this->smallVersion . '.bat', $data);
+            file_put_contents(__DIR__ . '/pull.bat', implode("\r\n", $this->images));
             $this->cmds = [];
         }
     }
 
     protected function pullImage(string $ver, $type = 'cli')
     {
-        $this->cmds[] = 'docker pull php:' . $ver . '-' . $type . '-alpine';
+        $this->images[] = 'docker pull php:' . $ver . '-' . $type . '-alpine';
         list($a, $b) = explode('.', $ver);
         if ($this->isLastVersion) {
-            $this->cmds[] = 'docker tag php:' . $ver . '-' . $type . '-alpine php:' . $this->bigVersion . '.' . $this->smallVersion . '-' . $type . '-alpine';
+            $this->images[] = 'docker tag php:' . $ver . '-' . $type . '-alpine php:' . $this->bigVersion . '.' . $this->smallVersion . '-' . $type . '-alpine';
         }
-        $this->cmds[] = '';
+        $this->images[] = '';
     }
 
     protected function cleanImage(string $ver, $type = 'cli')
@@ -89,34 +97,41 @@ class Docker
         $this->cmds[] = 'docker rmi php:' . $this->bigVersion . '.' . $this->smallVersion . '-' . $type . '-alpine';
     }
 
-    protected function buildImage($smallVerion, $buildType = 'cli')
+    protected function buildImage($fullVerion, $buildType = 'cli')
     {
 
-        $lastVersion = $this->bigVersion . '.' . $this->smallVersion;
+        $pushVersion = $this->bigVersion . '.' . $this->smallVersion;
 
-        if (!file_exists($lastVersion . '/' . $buildType . '/Dockerfile')) {
+        if (!file_exists($pushVersion . '/' . $buildType . '/Dockerfile')) {
             return;
         }
+        $baseImage = $this->namespace . ':' . $buildType . '-' . $fullVerion;
 
-        $this->cmds[] = 'docker build -f ' . $lastVersion . '/' . $buildType . '/Dockerfile -t ' . $this->namespace . ':' . $buildType . '-' . $smallVerion . ' .';
+        $this->cmds[] = 'docker build -f ' . $pushVersion . '/' . $buildType . '/Dockerfile -t ' . $this->namespace . ':' . $buildType . '-' . $fullVerion . ' .';
+        $this->cmds[] = 'docker push ' . $baseImage;
+        if ($this->isLastVersion) {
+            $this->cmds[] = 'docker push ' . $this->namespace . ':' . $buildType . '-' . $pushVersion;
+        }
+
+        $this->cmds[] = '';
 
         foreach ($this->namespaces as $namespace) {
 
-            $baseImage = $this->namespace . ':' . $buildType . '-' . $smallVerion;
-
-            $this->cmds[] = 'docker rmi ' . $namespace . ':' . $buildType . '-' . $smallVerion;
-            $this->cmds[] = 'docker tag ' . $baseImage . ' ' . $namespace . ':' . $buildType . '-' . $smallVerion;
-            $this->cmds[] = 'docker push ' . $namespace . ':' . $buildType . '-' . $smallVerion;
-            $this->cmds[] = 'docker rmi ' . $namespace . ':' . $buildType . '-' . $smallVerion;
+            $this->cmds[] = 'docker rmi ' . $namespace . ':' . $buildType . '-' . $fullVerion;
+            $this->cmds[] = 'docker tag ' . $baseImage . ' ' . $namespace . ':' . $buildType . '-' . $fullVerion;
+            $this->cmds[] = 'docker push ' . $namespace . ':' . $buildType . '-' . $fullVerion;
+            $this->cmds[] = 'docker rmi ' . $namespace . ':' . $buildType . '-' . $fullVerion;
 
             if ($this->isLastVersion) {
                 $this->cmds[] = '';
-                $this->cmds[] = 'docker rmi ' . $namespace . ':' . $buildType . '-' . $lastVersion;
-                $this->cmds[] = 'docker tag ' . $baseImage . ' ' . $namespace . ':' . $buildType . '-' . $lastVersion;
-                $this->cmds[] = 'docker push ' . $namespace . ':' . $buildType . '-' . $lastVersion;
-                $this->cmds[] = 'docker rmi ' . $namespace . ':' . $buildType . '-' . $lastVersion;
+                $this->cmds[] = 'docker rmi ' . $namespace . ':' . $buildType . '-' . $pushVersion;
+                $this->cmds[] = 'docker tag ' . $baseImage . ' ' . $namespace . ':' . $buildType . '-' . $pushVersion;
+                $this->cmds[] = 'docker push ' . $namespace . ':' . $buildType . '-' . $pushVersion;
+                $this->cmds[] = 'docker rmi ' . $namespace . ':' . $buildType . '-' . $pushVersion;
             }
         }
+        $this->cmds[] = '';
+        $this->cmds[] = '@REM 版本[' . $buildType . ']构建结束';
         $this->cmds[] = '';
     }
 }
