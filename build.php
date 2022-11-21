@@ -105,11 +105,15 @@ class Docker
         if (!file_exists($pushVersion . '/' . $buildType . '/Dockerfile')) {
             return;
         }
+
         $baseImage = $this->namespace . ':' . $buildType . '-' . $fullVerion;
 
-        $this->cmds[] = 'docker build -f ' . $pushVersion . '/' . $buildType . '/Dockerfile -t ' . $this->namespace . ':' . $buildType . '-' . $fullVerion . ' .';
+        $this->cmds[] = 'docker build -f ' . $pushVersion . '/' . $buildType . '/Dockerfile -t ' . $baseImage . ' .';
         $this->cmds[] = 'docker push ' . $baseImage;
+
         if ($this->isLastVersion) {
+            $this->cmds[] = 'docker rmi ' . $this->namespace . ':' . $buildType . '-' . $pushVersion;
+            $this->cmds[] = 'docker tag ' . $baseImage . ' ' . $this->namespace . ':' . $buildType . '-' . $pushVersion;
             $this->cmds[] = 'docker push ' . $this->namespace . ':' . $buildType . '-' . $pushVersion;
         }
 

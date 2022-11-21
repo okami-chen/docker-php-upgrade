@@ -1,5 +1,7 @@
 docker build -f 8.1/cli/Dockerfile -t sync402/docker-php:cli-8.1.12 .
 docker push sync402/docker-php:cli-8.1.12
+docker rmi sync402/docker-php:cli-8.1
+docker tag sync402/docker-php:cli-8.1.12 sync402/docker-php:cli-8.1
 docker push sync402/docker-php:cli-8.1
 
 docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-8.1.12
@@ -16,6 +18,8 @@ docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-8.1
 
 docker build -f 8.1/cli-pure/Dockerfile -t sync402/docker-php:cli-pure-8.1.12 .
 docker push sync402/docker-php:cli-pure-8.1.12
+docker rmi sync402/docker-php:cli-pure-8.1
+docker tag sync402/docker-php:cli-pure-8.1.12 sync402/docker-php:cli-pure-8.1
 docker push sync402/docker-php:cli-pure-8.1
 
 docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-pure-8.1.12
@@ -32,6 +36,8 @@ docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-pure-8.1
 
 docker build -f 8.1/cli-amqp/Dockerfile -t sync402/docker-php:cli-amqp-8.1.12 .
 docker push sync402/docker-php:cli-amqp-8.1.12
+docker rmi sync402/docker-php:cli-amqp-8.1
+docker tag sync402/docker-php:cli-amqp-8.1.12 sync402/docker-php:cli-amqp-8.1
 docker push sync402/docker-php:cli-amqp-8.1
 
 docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-amqp-8.1.12
@@ -48,6 +54,8 @@ docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-amqp-8.1
 
 docker build -f 8.1/cli-swoole/Dockerfile -t sync402/docker-php:cli-swoole-8.1.12 .
 docker push sync402/docker-php:cli-swoole-8.1.12
+docker rmi sync402/docker-php:cli-swoole-8.1
+docker tag sync402/docker-php:cli-swoole-8.1.12 sync402/docker-php:cli-swoole-8.1
 docker push sync402/docker-php:cli-swoole-8.1
 
 docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-swoole-8.1.12
@@ -64,6 +72,8 @@ docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-swoole-8.1
 
 docker build -f 8.1/fpm/Dockerfile -t sync402/docker-php:fpm-8.1.12 .
 docker push sync402/docker-php:fpm-8.1.12
+docker rmi sync402/docker-php:fpm-8.1
+docker tag sync402/docker-php:fpm-8.1.12 sync402/docker-php:fpm-8.1
 docker push sync402/docker-php:fpm-8.1
 
 docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-8.1.12
@@ -80,6 +90,8 @@ docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-8.1
 
 docker build -f 8.1/fpm-pure/Dockerfile -t sync402/docker-php:fpm-pure-8.1.12 .
 docker push sync402/docker-php:fpm-pure-8.1.12
+docker rmi sync402/docker-php:fpm-pure-8.1
+docker tag sync402/docker-php:fpm-pure-8.1.12 sync402/docker-php:fpm-pure-8.1
 docker push sync402/docker-php:fpm-pure-8.1
 
 docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-pure-8.1.12
@@ -96,6 +108,8 @@ docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-pure-8.1
 
 docker build -f 8.1/fpm-amqp/Dockerfile -t sync402/docker-php:fpm-amqp-8.1.12 .
 docker push sync402/docker-php:fpm-amqp-8.1.12
+docker rmi sync402/docker-php:fpm-amqp-8.1
+docker tag sync402/docker-php:fpm-amqp-8.1.12 sync402/docker-php:fpm-amqp-8.1
 docker push sync402/docker-php:fpm-amqp-8.1
 
 docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-amqp-8.1.12
@@ -112,6 +126,8 @@ docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-amqp-8.1
 
 docker build -f 8.1/nginx/Dockerfile -t sync402/docker-php:nginx-8.1.12 .
 docker push sync402/docker-php:nginx-8.1.12
+docker rmi sync402/docker-php:nginx-8.1
+docker tag sync402/docker-php:nginx-8.1.12 sync402/docker-php:nginx-8.1
 docker push sync402/docker-php:nginx-8.1
 
 docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:nginx-8.1.12
@@ -128,6 +144,8 @@ docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:nginx-8.1
 
 docker build -f 8.1/nginx-pure/Dockerfile -t sync402/docker-php:nginx-pure-8.1.12 .
 docker push sync402/docker-php:nginx-pure-8.1.12
+docker rmi sync402/docker-php:nginx-pure-8.1
+docker tag sync402/docker-php:nginx-pure-8.1.12 sync402/docker-php:nginx-pure-8.1
 docker push sync402/docker-php:nginx-pure-8.1
 
 docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:nginx-pure-8.1.12
@@ -144,6 +162,8 @@ docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:nginx-pure-8.1
 
 docker build -f 8.1/nginx-amqp/Dockerfile -t sync402/docker-php:nginx-amqp-8.1.12 .
 docker push sync402/docker-php:nginx-amqp-8.1.12
+docker rmi sync402/docker-php:nginx-amqp-8.1
+docker tag sync402/docker-php:nginx-amqp-8.1.12 sync402/docker-php:nginx-amqp-8.1
 docker push sync402/docker-php:nginx-amqp-8.1
 
 docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:nginx-amqp-8.1.12
@@ -160,6 +180,8 @@ docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:nginx-amqp-8.1
 
 docker build -f 8.1/octane/Dockerfile -t sync402/docker-php:octane-8.1.12 .
 docker push sync402/docker-php:octane-8.1.12
+docker rmi sync402/docker-php:octane-8.1
+docker tag sync402/docker-php:octane-8.1.12 sync402/docker-php:octane-8.1
 docker push sync402/docker-php:octane-8.1
 
 docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:octane-8.1.12
@@ -176,6 +198,8 @@ docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:octane-8.1
 
 docker build -f 8.1/octane-pure/Dockerfile -t sync402/docker-php:octane-pure-8.1.12 .
 docker push sync402/docker-php:octane-pure-8.1.12
+docker rmi sync402/docker-php:octane-pure-8.1
+docker tag sync402/docker-php:octane-pure-8.1.12 sync402/docker-php:octane-pure-8.1
 docker push sync402/docker-php:octane-pure-8.1
 
 docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:octane-pure-8.1.12
