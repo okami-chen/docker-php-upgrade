@@ -19,6 +19,10 @@ class Docker
         '8.0.25', '8.1.12', '8.2.0RC6'
     ];
 
+    protected int $bigVersion = 0;
+
+    protected int $smallVersion = 0;
+
 
     public function build(array|string $version)
     {
@@ -27,6 +31,8 @@ class Docker
         }
 
         foreach ($version as $ver) {
+
+            list($this->bigVersion, $this->smallVersion) = explode(".", $ver);
 
             $this->pullImage($ver, 'cli');
             $this->buildImage($ver, 'cli');

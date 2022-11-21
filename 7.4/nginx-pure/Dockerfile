@@ -1,4 +1,4 @@
-FROM docker-php-upgrade:fpm-7.4-pure
+FROM docker-php-upgrade:fpm-pure-7.4
 
 COPY ./conf/nginx/start.sh /opt/start.sh
 COPY ./conf/nginx/nginx.conf /run/nginx/nginx.conf

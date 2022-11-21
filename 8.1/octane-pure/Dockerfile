@@ -1,4 +1,4 @@
-FROM docker-php-upgrade:cli-8.1-swoole
+FROM docker-php-upgrade:cli-swoole-8.1
 
 COPY ./conf/octane/start.sh /opt/start.sh
 COPY ./conf/octane/nginx.conf /run/nginx/nginx.conf
