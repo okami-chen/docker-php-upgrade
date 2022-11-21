@@ -1,4 +1,4 @@
-FROM docker-php-upgrade:fpm-pure-7.3
+FROM sync402/docker-php:fpm-pure-7.3
 
 COPY ./conf/nginx/start.sh /opt/start.sh
 COPY ./conf/nginx/nginx.conf /run/nginx/nginx.conf

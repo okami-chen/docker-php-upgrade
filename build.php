@@ -8,11 +8,10 @@ class Docker
 {
     protected array $cmds = [];
 
-    protected string $namespace = 'docker-php-upgrade';
+    protected string $namespace = 'sync402/docker-php';
 
     protected array $namespaces = [
-        'registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade',
-        'sync402/docker-php',
+        'registry.cn-shanghai.aliyuncs.com/okami/sync402/docker-php',
     ];
 
     /**
@@ -111,6 +110,7 @@ class Docker
             $this->cmds[] = 'docker rmi ' . $namespace . ':' . $buildType . '-' . $smallVerion;
 
             if ($this->isLastVersion) {
+                $this->cmds[] = '';
                 $this->cmds[] = 'docker rmi ' . $namespace . ':' . $buildType . '-' . $lastVersion;
                 $this->cmds[] = 'docker tag ' . $baseImage . ' ' . $namespace . ':' . $buildType . '-' . $lastVersion;
                 $this->cmds[] = 'docker push ' . $namespace . ':' . $buildType . '-' . $lastVersion;

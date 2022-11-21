@@ -1,4 +1,4 @@
-FROM docker-php-upgrade:fpm-amqp-8.2
+FROM sync402/docker-php:fpm-amqp-8.2
 
 COPY ./conf/nginx/start.sh /opt/start.sh
 COPY ./conf/nginx/nginx.conf /run/nginx/nginx.conf

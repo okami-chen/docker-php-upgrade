@@ -1,4 +1,4 @@
-FROM docker-php-upgrade:cli-8.0
+FROM sync402/docker-php:cli-8.0
 
 COPY ./conf/octane/start.sh /opt/start.sh
 COPY ./conf/octane/nginx.conf /run/nginx/nginx.conf
