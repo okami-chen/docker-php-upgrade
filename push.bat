@@ -21,6 +21,9 @@ docker rmi sync402/docker-php:fpm-pure-5.6
 docker push sync402/docker-php:fpm-amqp-5.6.40
 docker push sync402/docker-php:fpm-amqp-5.6
 docker rmi sync402/docker-php:fpm-amqp-5.6
+docker push sync402/docker-php:fpm-mongo-5.6.40
+docker push sync402/docker-php:fpm-mongo-5.6
+docker rmi sync402/docker-php:fpm-mongo-5.6
 docker push sync402/docker-php:fpm-5.6.40
 docker push sync402/docker-php:fpm-5.6
 docker rmi sync402/docker-php:fpm-5.6
@@ -62,6 +65,9 @@ docker rmi sync402/docker-php:fpm-pure-7.2
 docker push sync402/docker-php:fpm-amqp-7.2.34
 docker push sync402/docker-php:fpm-amqp-7.2
 docker rmi sync402/docker-php:fpm-amqp-7.2
+docker push sync402/docker-php:fpm-mongo-7.2.34
+docker push sync402/docker-php:fpm-mongo-7.2
+docker rmi sync402/docker-php:fpm-mongo-7.2
 docker push sync402/docker-php:fpm-7.2.34
 docker push sync402/docker-php:fpm-7.2
 docker rmi sync402/docker-php:fpm-7.2
@@ -103,6 +109,9 @@ docker rmi sync402/docker-php:fpm-pure-7.3
 docker push sync402/docker-php:fpm-amqp-7.3.24
 docker push sync402/docker-php:fpm-amqp-7.3
 docker rmi sync402/docker-php:fpm-amqp-7.3
+docker push sync402/docker-php:fpm-mongo-7.3.24
+docker push sync402/docker-php:fpm-mongo-7.3
+docker rmi sync402/docker-php:fpm-mongo-7.3
 docker push sync402/docker-php:fpm-7.3.24
 docker push sync402/docker-php:fpm-7.3
 docker rmi sync402/docker-php:fpm-7.3
@@ -144,6 +153,9 @@ docker rmi sync402/docker-php:fpm-pure-7.4
 docker push sync402/docker-php:fpm-amqp-7.4.33
 docker push sync402/docker-php:fpm-amqp-7.4
 docker rmi sync402/docker-php:fpm-amqp-7.4
+docker push sync402/docker-php:fpm-mongo-7.4.33
+docker push sync402/docker-php:fpm-mongo-7.4
+docker rmi sync402/docker-php:fpm-mongo-7.4
 docker push sync402/docker-php:fpm-7.4.33
 docker push sync402/docker-php:fpm-7.4
 docker rmi sync402/docker-php:fpm-7.4
@@ -185,6 +197,9 @@ docker rmi sync402/docker-php:fpm-pure-8.0
 docker push sync402/docker-php:fpm-amqp-8.0.25
 docker push sync402/docker-php:fpm-amqp-8.0
 docker rmi sync402/docker-php:fpm-amqp-8.0
+docker push sync402/docker-php:fpm-mongo-8.0.25
+docker push sync402/docker-php:fpm-mongo-8.0
+docker rmi sync402/docker-php:fpm-mongo-8.0
 docker push sync402/docker-php:fpm-8.0.25
 docker push sync402/docker-php:fpm-8.0
 docker rmi sync402/docker-php:fpm-8.0
@@ -226,6 +241,9 @@ docker rmi sync402/docker-php:fpm-pure-8.1
 docker push sync402/docker-php:fpm-amqp-8.1.12
 docker push sync402/docker-php:fpm-amqp-8.1
 docker rmi sync402/docker-php:fpm-amqp-8.1
+docker push sync402/docker-php:fpm-mongo-8.1.12
+docker push sync402/docker-php:fpm-mongo-8.1
+docker rmi sync402/docker-php:fpm-mongo-8.1
 docker push sync402/docker-php:fpm-8.1.12
 docker push sync402/docker-php:fpm-8.1
 docker rmi sync402/docker-php:fpm-8.1
@@ -267,6 +285,9 @@ docker rmi sync402/docker-php:fpm-pure-8.2
 docker push sync402/docker-php:fpm-amqp-8.2.0RC6
 docker push sync402/docker-php:fpm-amqp-8.2
 docker rmi sync402/docker-php:fpm-amqp-8.2
+docker push sync402/docker-php:fpm-mongo-8.2.0RC6
+docker push sync402/docker-php:fpm-mongo-8.2
+docker rmi sync402/docker-php:fpm-mongo-8.2
 docker push sync402/docker-php:fpm-8.2.0RC6
 docker push sync402/docker-php:fpm-8.2
 docker rmi sync402/docker-php:fpm-8.2

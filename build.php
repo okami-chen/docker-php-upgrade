@@ -73,6 +73,7 @@ class Docker
 
             $this->buildImage($smallVerion, 'fpm-pure');
             $this->buildImage($smallVerion, 'fpm-amqp');
+            $this->buildImage($smallVerion, 'fpm-mongo');
             $this->buildImage($smallVerion, 'fpm');
 
 

@@ -103,6 +103,21 @@ docker tag sync402/docker-php:fpm-amqp-8.0.25 registry.cn-shanghai.aliyuncs.com/
 docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-amqp-8.0
 docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-amqp-8.0
 
+@REM 版本[fpm-mongo]构建
+docker build -f 8.0/fpm-mongo/Dockerfile -t sync402/docker-php:fpm-mongo-8.0.25 .
+docker rmi sync402/docker-php:fpm-mongo-8.0
+docker tag sync402/docker-php:fpm-mongo-8.0.25 sync402/docker-php:fpm-mongo-8.0
+
+docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-mongo-8.0.25
+docker tag sync402/docker-php:fpm-mongo-8.0.25 registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-mongo-8.0.25
+docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-mongo-8.0.25
+docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-mongo-8.0.25
+
+docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-mongo-8.0
+docker tag sync402/docker-php:fpm-mongo-8.0.25 registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-mongo-8.0
+docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-mongo-8.0
+docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-mongo-8.0
+
 @REM 版本[fpm]构建
 docker build -f 8.0/fpm/Dockerfile -t sync402/docker-php:fpm-8.0.25 .
 docker rmi sync402/docker-php:fpm-8.0
