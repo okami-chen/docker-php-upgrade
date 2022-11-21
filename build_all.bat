@@ -11,6 +11,7 @@ start cmd /k "E:\service\docker-php\build_8.0.bat"
 start cmd /k "E:\service\docker-php\build_7.4.bat"
 start cmd /k "E:\service\docker-php\build_7.3.bat"
 start cmd /k "E:\service\docker-php\build_7.2.bat"
+start cmd /k "E:\service\docker-php\build_5.6.bat"
 
 
 
