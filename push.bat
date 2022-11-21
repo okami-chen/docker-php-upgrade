@@ -11,6 +11,9 @@ docker rmi sync402/docker-php:cli-5.6
 docker push sync402/docker-php:cli-swoole-5.6.40
 docker push sync402/docker-php:cli-swoole-5.6
 docker rmi sync402/docker-php:cli-swoole-5.6
+docker push sync402/docker-php:cli-mongo-5.6.40
+docker push sync402/docker-php:cli-mongo-5.6
+docker rmi sync402/docker-php:cli-mongo-5.6
 docker rmi php:5.6-fpm-alpine
 docker push sync402/docker-php:fpm-pure-5.6.40
 docker push sync402/docker-php:fpm-pure-5.6
@@ -49,6 +52,9 @@ docker rmi sync402/docker-php:cli-7.2
 docker push sync402/docker-php:cli-swoole-7.2.34
 docker push sync402/docker-php:cli-swoole-7.2
 docker rmi sync402/docker-php:cli-swoole-7.2
+docker push sync402/docker-php:cli-mongo-7.2.34
+docker push sync402/docker-php:cli-mongo-7.2
+docker rmi sync402/docker-php:cli-mongo-7.2
 docker rmi php:7.2-fpm-alpine
 docker push sync402/docker-php:fpm-pure-7.2.34
 docker push sync402/docker-php:fpm-pure-7.2
@@ -87,6 +93,9 @@ docker rmi sync402/docker-php:cli-7.3
 docker push sync402/docker-php:cli-swoole-7.3.24
 docker push sync402/docker-php:cli-swoole-7.3
 docker rmi sync402/docker-php:cli-swoole-7.3
+docker push sync402/docker-php:cli-mongo-7.3.24
+docker push sync402/docker-php:cli-mongo-7.3
+docker rmi sync402/docker-php:cli-mongo-7.3
 docker rmi php:7.3-fpm-alpine
 docker push sync402/docker-php:fpm-pure-7.3.24
 docker push sync402/docker-php:fpm-pure-7.3
@@ -125,6 +134,9 @@ docker rmi sync402/docker-php:cli-7.4
 docker push sync402/docker-php:cli-swoole-7.4.33
 docker push sync402/docker-php:cli-swoole-7.4
 docker rmi sync402/docker-php:cli-swoole-7.4
+docker push sync402/docker-php:cli-mongo-7.4.33
+docker push sync402/docker-php:cli-mongo-7.4
+docker rmi sync402/docker-php:cli-mongo-7.4
 docker rmi php:7.4-fpm-alpine
 docker push sync402/docker-php:fpm-pure-7.4.33
 docker push sync402/docker-php:fpm-pure-7.4
@@ -163,6 +175,9 @@ docker rmi sync402/docker-php:cli-8.0
 docker push sync402/docker-php:cli-swoole-8.0.25
 docker push sync402/docker-php:cli-swoole-8.0
 docker rmi sync402/docker-php:cli-swoole-8.0
+docker push sync402/docker-php:cli-mongo-8.0.25
+docker push sync402/docker-php:cli-mongo-8.0
+docker rmi sync402/docker-php:cli-mongo-8.0
 docker rmi php:8.0-fpm-alpine
 docker push sync402/docker-php:fpm-pure-8.0.25
 docker push sync402/docker-php:fpm-pure-8.0
@@ -201,6 +216,9 @@ docker rmi sync402/docker-php:cli-8.1
 docker push sync402/docker-php:cli-swoole-8.1.12
 docker push sync402/docker-php:cli-swoole-8.1
 docker rmi sync402/docker-php:cli-swoole-8.1
+docker push sync402/docker-php:cli-mongo-8.1.12
+docker push sync402/docker-php:cli-mongo-8.1
+docker rmi sync402/docker-php:cli-mongo-8.1
 docker rmi php:8.1-fpm-alpine
 docker push sync402/docker-php:fpm-pure-8.1.12
 docker push sync402/docker-php:fpm-pure-8.1
@@ -239,6 +257,9 @@ docker rmi sync402/docker-php:cli-8.2
 docker push sync402/docker-php:cli-swoole-8.2.0RC6
 docker push sync402/docker-php:cli-swoole-8.2
 docker rmi sync402/docker-php:cli-swoole-8.2
+docker push sync402/docker-php:cli-mongo-8.2.0RC6
+docker push sync402/docker-php:cli-mongo-8.2
+docker rmi sync402/docker-php:cli-mongo-8.2
 docker rmi php:8.2-fpm-alpine
 docker push sync402/docker-php:fpm-pure-8.2.0RC6
 docker push sync402/docker-php:fpm-pure-8.2

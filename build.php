@@ -67,6 +67,7 @@ class Docker
             $this->buildImage($smallVerion, 'cli-amqp');
             $this->buildImage($smallVerion, 'cli');
             $this->buildImage($smallVerion, 'cli-swoole');
+            $this->buildImage($smallVerion, 'cli-mongo');
 
             $this->pullImage($smallVerion, 'fpm');
 

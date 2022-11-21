@@ -58,6 +58,21 @@ docker tag sync402/docker-php:cli-swoole-8.0.25 registry.cn-shanghai.aliyuncs.co
 docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-swoole-8.0
 docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-swoole-8.0
 
+@REM 版本[cli-mongo]构建
+docker build -f 8.0/cli-mongo/Dockerfile -t sync402/docker-php:cli-mongo-8.0.25 .
+docker rmi sync402/docker-php:cli-mongo-8.0
+docker tag sync402/docker-php:cli-mongo-8.0.25 sync402/docker-php:cli-mongo-8.0
+
+docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-mongo-8.0.25
+docker tag sync402/docker-php:cli-mongo-8.0.25 registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-mongo-8.0.25
+docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-mongo-8.0.25
+docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-mongo-8.0.25
+
+docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-mongo-8.0
+docker tag sync402/docker-php:cli-mongo-8.0.25 registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-mongo-8.0
+docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-mongo-8.0
+docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-mongo-8.0
+
 @REM 版本[fpm-pure]构建
 docker build -f 8.0/fpm-pure/Dockerfile -t sync402/docker-php:fpm-pure-8.0.25 .
 docker rmi sync402/docker-php:fpm-pure-8.0
