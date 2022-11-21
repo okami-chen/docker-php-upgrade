@@ -13,21 +13,6 @@ docker tag sync402/docker-php:cli-pure-8.1.12 registry.cn-shanghai.aliyuncs.com/
 docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-pure-8.1
 docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-pure-8.1
 
-@REM 版本[cli]构建
-docker build -f 8.1/cli/Dockerfile -t sync402/docker-php:cli-8.1.12 .
-docker rmi sync402/docker-php:cli-8.1
-docker tag sync402/docker-php:cli-8.1.12 sync402/docker-php:cli-8.1
-
-docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-8.1.12
-docker tag sync402/docker-php:cli-8.1.12 registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-8.1.12
-docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-8.1.12
-docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-8.1.12
-
-docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-8.1
-docker tag sync402/docker-php:cli-8.1.12 registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-8.1
-docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-8.1
-docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-8.1
-
 @REM 版本[cli-amqp]构建
 docker build -f 8.1/cli-amqp/Dockerfile -t sync402/docker-php:cli-amqp-8.1.12 .
 docker rmi sync402/docker-php:cli-amqp-8.1
@@ -42,6 +27,21 @@ docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-amqp-8.1
 docker tag sync402/docker-php:cli-amqp-8.1.12 registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-amqp-8.1
 docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-amqp-8.1
 docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-amqp-8.1
+
+@REM 版本[cli]构建
+docker build -f 8.1/cli/Dockerfile -t sync402/docker-php:cli-8.1.12 .
+docker rmi sync402/docker-php:cli-8.1
+docker tag sync402/docker-php:cli-8.1.12 sync402/docker-php:cli-8.1
+
+docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-8.1.12
+docker tag sync402/docker-php:cli-8.1.12 registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-8.1.12
+docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-8.1.12
+docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-8.1.12
+
+docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-8.1
+docker tag sync402/docker-php:cli-8.1.12 registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-8.1
+docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-8.1
+docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-8.1
 
 @REM 版本[cli-swoole]构建
 docker build -f 8.1/cli-swoole/Dockerfile -t sync402/docker-php:cli-swoole-8.1.12 .
@@ -73,21 +73,6 @@ docker tag sync402/docker-php:fpm-pure-8.1.12 registry.cn-shanghai.aliyuncs.com/
 docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-pure-8.1
 docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-pure-8.1
 
-@REM 版本[fpm]构建
-docker build -f 8.1/fpm/Dockerfile -t sync402/docker-php:fpm-8.1.12 .
-docker rmi sync402/docker-php:fpm-8.1
-docker tag sync402/docker-php:fpm-8.1.12 sync402/docker-php:fpm-8.1
-
-docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-8.1.12
-docker tag sync402/docker-php:fpm-8.1.12 registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-8.1.12
-docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-8.1.12
-docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-8.1.12
-
-docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-8.1
-docker tag sync402/docker-php:fpm-8.1.12 registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-8.1
-docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-8.1
-docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-8.1
-
 @REM 版本[fpm-amqp]构建
 docker build -f 8.1/fpm-amqp/Dockerfile -t sync402/docker-php:fpm-amqp-8.1.12 .
 docker rmi sync402/docker-php:fpm-amqp-8.1
@@ -102,6 +87,21 @@ docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-amqp-8.1
 docker tag sync402/docker-php:fpm-amqp-8.1.12 registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-amqp-8.1
 docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-amqp-8.1
 docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-amqp-8.1
+
+@REM 版本[fpm]构建
+docker build -f 8.1/fpm/Dockerfile -t sync402/docker-php:fpm-8.1.12 .
+docker rmi sync402/docker-php:fpm-8.1
+docker tag sync402/docker-php:fpm-8.1.12 sync402/docker-php:fpm-8.1
+
+docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-8.1.12
+docker tag sync402/docker-php:fpm-8.1.12 registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-8.1.12
+docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-8.1.12
+docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-8.1.12
+
+docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-8.1
+docker tag sync402/docker-php:fpm-8.1.12 registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-8.1
+docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-8.1
+docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-8.1
 
 @REM 版本[nginx]构建
 docker build -f 8.1/nginx/Dockerfile -t sync402/docker-php:nginx-8.1.12 .

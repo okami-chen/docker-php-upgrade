@@ -59,15 +59,16 @@ class Docker
             $this->pullImage($smallVerion, 'cli');
 
             $this->buildImage($smallVerion, 'cli-pure');
-            $this->buildImage($smallVerion, 'cli');
             $this->buildImage($smallVerion, 'cli-amqp');
+            $this->buildImage($smallVerion, 'cli');
             $this->buildImage($smallVerion, 'cli-swoole');
 
             $this->pullImage($smallVerion, 'fpm');
 
             $this->buildImage($smallVerion, 'fpm-pure');
-            $this->buildImage($smallVerion, 'fpm');
             $this->buildImage($smallVerion, 'fpm-amqp');
+            $this->buildImage($smallVerion, 'fpm');
+
 
             $this->buildImage($smallVerion, 'nginx');
             $this->buildImage($smallVerion, 'nginx-pure');
