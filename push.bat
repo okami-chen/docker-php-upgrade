@@ -1,3 +1,5 @@
+docker rmi php:5.5-cli-alpine
+docker rmi php:5.5-fpm-alpine
 docker rmi php:5.6-cli-alpine
 docker push sync402/docker-php:cli-pure-5.6.40
 docker push sync402/docker-php:cli-pure-5.6

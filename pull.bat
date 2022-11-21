@@ -1,6 +1,12 @@
 docker login --username=ap3747a7y@aliyun.com --password=dehua2011 registry.cn-shanghai.aliyuncs.com
 docker login --username=sync402 --password=dehua2011
 
+docker pull php:5.5.38-cli-alpine
+docker tag php:5.5.38-cli-alpine php:5.5-cli-alpine
+
+docker pull php:5.5.38-fpm-alpine
+docker tag php:5.5.38-fpm-alpine php:5.5-fpm-alpine
+
 docker pull php:5.6.40-cli-alpine
 docker tag php:5.6.40-cli-alpine php:5.6-cli-alpine
 
