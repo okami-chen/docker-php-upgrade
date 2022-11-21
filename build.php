@@ -12,7 +12,7 @@ class Docker
 
     protected array $namespaces = [
         'registry.cn-shanghai.aliyuncs.com/okami/docker-php-upgrade',
-        'sync402/docker-php-upgrade'
+        'sync402/docker-php',
     ];
 
     /**
@@ -54,14 +54,18 @@ class Docker
 
             $this->buildImage($smallVerion, 'cli');
             $this->buildImage($smallVerion, 'cli-pure');
+            $this->buildImage($smallVerion, 'cli-amqp');
             $this->buildImage($smallVerion, 'cli-swoole');
 
             $this->pullImage($smallVerion, 'fpm');
 
             $this->buildImage($smallVerion, 'fpm');
             $this->buildImage($smallVerion, 'fpm-pure');
+            $this->buildImage($smallVerion, 'fpm-amqp');
+
             $this->buildImage($smallVerion, 'nginx');
             $this->buildImage($smallVerion, 'nginx-pure');
+            $this->buildImage($smallVerion, 'nginx-amqp');
             $this->buildImage($smallVerion, 'octane');
             $this->buildImage($smallVerion, 'octane-pure');
 
@@ -91,17 +95,23 @@ class Docker
 
         $lastVersion = $this->bigVersion . '.' . $this->smallVersion;
 
+        if (!file_exists($lastVersion . '/' . $buildType . '/Dockerfile')) {
+            return;
+        }
+
         $this->cmds[] = 'docker build -f ' . $lastVersion . '/' . $buildType . '/Dockerfile -t ' . $this->namespace . ':' . $buildType . '-' . $smallVerion . ' .';
 
         foreach ($this->namespaces as $namespace) {
 
             $baseImage = $this->namespace . ':' . $buildType . '-' . $smallVerion;
 
+            $this->cmds[] = 'docker rmi ' . $namespace . ':' . $buildType . '-' . $smallVerion;
             $this->cmds[] = 'docker tag ' . $baseImage . ' ' . $namespace . ':' . $buildType . '-' . $smallVerion;
             $this->cmds[] = 'docker push ' . $namespace . ':' . $buildType . '-' . $smallVerion;
             $this->cmds[] = 'docker rmi ' . $namespace . ':' . $buildType . '-' . $smallVerion;
 
             if ($this->isLastVersion) {
+                $this->cmds[] = 'docker rmi ' . $namespace . ':' . $buildType . '-' . $lastVersion;
                 $this->cmds[] = 'docker tag ' . $baseImage . ' ' . $namespace . ':' . $buildType . '-' . $lastVersion;
                 $this->cmds[] = 'docker push ' . $namespace . ':' . $buildType . '-' . $lastVersion;
                 $this->cmds[] = 'docker rmi ' . $namespace . ':' . $buildType . '-' . $lastVersion;
