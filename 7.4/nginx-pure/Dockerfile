@@ -1,4 +1,4 @@
-registry.cn-shanghai.aliyuncs.com/okami/sync402/docker-php:fpm-pure-7.4
+FROM sync402/docker-php:fpm-pure-7.4
 
 COPY ./conf/nginx/start.sh /opt/start.sh
 COPY ./conf/nginx/nginx.conf /run/nginx/nginx.conf

@@ -7,12 +7,17 @@ $version = [
 class Docker
 {
     protected array $cmds = [
+
     ];
 
     protected array $images = [
         'docker login --username=ap3747a7y@aliyun.com --password=dehua2011 registry.cn-shanghai.aliyuncs.com',
         'docker login --username=sync402 --password=dehua2011',
         ''
+    ];
+
+    protected array $push = [
+
     ];
 
     protected string $namespace = 'sync402/docker-php';
@@ -79,6 +84,7 @@ class Docker
             $data = implode("\r\n", $this->cmds);
             file_put_contents(__DIR__ . '/build_' . $this->bigVersion . '.' . $this->smallVersion . '.bat', $data);
             file_put_contents(__DIR__ . '/pull.bat', implode("\r\n", $this->images));
+            file_put_contents(__DIR__ . '/push.bat', implode("\r\n", $this->push));
             $this->cmds = [];
         }
     }
@@ -89,6 +95,7 @@ class Docker
         list($a, $b) = explode('.', $ver);
         if ($this->isLastVersion) {
             $this->images[] = 'docker tag php:' . $ver . '-' . $type . '-alpine php:' . $this->bigVersion . '.' . $this->smallVersion . '-' . $type . '-alpine';
+            $this->push[] = 'docker rmi php:' . $this->bigVersion . '.' . $this->smallVersion . '-' . $type . '-alpine';
         }
         $this->images[] = '';
     }
@@ -112,11 +119,14 @@ class Docker
 
         $this->cmds[] = 'docker build -f ' . $pushVersion . '/' . $buildType . '/Dockerfile -t ' . $baseImage . ' .';
         //$this->cmds[] = 'docker push ' . $baseImage;
+        $this->push[] = 'docker push ' . $baseImage;
 
         if ($this->isLastVersion) {
             $this->cmds[] = 'docker rmi ' . $this->namespace . ':' . $buildType . '-' . $pushVersion;
             $this->cmds[] = 'docker tag ' . $baseImage . ' ' . $this->namespace . ':' . $buildType . '-' . $pushVersion;
             //$this->cmds[] = 'docker push ' . $this->namespace . ':' . $buildType . '-' . $pushVersion;
+            $this->push[] = 'docker push ' . $this->namespace . ':' . $buildType . '-' . $pushVersion;
+            $this->push[] = 'docker rmi ' . $this->namespace . ':' . $buildType . '-' . $pushVersion;
         }
 
         $this->cmds[] = '';
