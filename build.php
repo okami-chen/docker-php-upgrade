@@ -58,15 +58,15 @@ class Docker
 
             $this->pullImage($smallVerion, 'cli');
 
-            $this->buildImage($smallVerion, 'cli');
             $this->buildImage($smallVerion, 'cli-pure');
+            $this->buildImage($smallVerion, 'cli');
             $this->buildImage($smallVerion, 'cli-amqp');
             $this->buildImage($smallVerion, 'cli-swoole');
 
             $this->pullImage($smallVerion, 'fpm');
 
-            $this->buildImage($smallVerion, 'fpm');
             $this->buildImage($smallVerion, 'fpm-pure');
+            $this->buildImage($smallVerion, 'fpm');
             $this->buildImage($smallVerion, 'fpm-amqp');
 
             $this->buildImage($smallVerion, 'nginx');
@@ -107,14 +107,15 @@ class Docker
         }
 
         $baseImage = $this->namespace . ':' . $buildType . '-' . $fullVerion;
+        $this->cmds[] = '@REM 版本[' . $buildType . ']构建';
 
         $this->cmds[] = 'docker build -f ' . $pushVersion . '/' . $buildType . '/Dockerfile -t ' . $baseImage . ' .';
-        $this->cmds[] = 'docker push ' . $baseImage;
+        //$this->cmds[] = 'docker push ' . $baseImage;
 
         if ($this->isLastVersion) {
             $this->cmds[] = 'docker rmi ' . $this->namespace . ':' . $buildType . '-' . $pushVersion;
             $this->cmds[] = 'docker tag ' . $baseImage . ' ' . $this->namespace . ':' . $buildType . '-' . $pushVersion;
-            $this->cmds[] = 'docker push ' . $this->namespace . ':' . $buildType . '-' . $pushVersion;
+            //$this->cmds[] = 'docker push ' . $this->namespace . ':' . $buildType . '-' . $pushVersion;
         }
 
         $this->cmds[] = '';
@@ -134,8 +135,6 @@ class Docker
                 $this->cmds[] = 'docker rmi ' . $namespace . ':' . $buildType . '-' . $pushVersion;
             }
         }
-        $this->cmds[] = '';
-        $this->cmds[] = '@REM 版本[' . $buildType . ']构建结束';
         $this->cmds[] = '';
     }
 }
