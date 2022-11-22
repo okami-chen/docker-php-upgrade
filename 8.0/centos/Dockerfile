@@ -17,7 +17,7 @@ RUN dnf -y install epel-release \
 && dnf -y clean all \
 && dnf -y makecache \
 && dnf -y install https://rpms.remirepo.net/enterprise/remi-release-8.5.rpm \
-&& dnf -y module enable php:remi-8.1 \
+&& dnf -y module enable php:remi-8.0 \
 && dnf -y install php php-mysqlnd php-opcache php-curl php-dom php-exif php-fileinfo php-fpm php-gd php-hash \
 php-json php-mbstring php-mysqli php-pdo_mysql php-openssl php-sockets php-sysvsem php-sysvshm php-sysvmsg \
 php-pcre php-xml libsodium php-intl php-pecl-apcu php-zip php-bz2 php-bcmath php-mcrypt php-gettext  \

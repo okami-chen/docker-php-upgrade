@@ -49,6 +49,23 @@ docker tag sync402/docker-php:cli-8.2.0RC6 registry.cn-shanghai.aliyuncs.com/oka
 docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-8.2
 docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-8.2
 
+@REM 版本[centos]构建
+docker build -f 8.2/centos/Dockerfile -t sync402/docker-php:centos-8.2.0RC6 .
+docker push sync402/docker-php:centos-8.2.0RC6
+docker rmi sync402/docker-php:centos-8.2
+docker tag sync402/docker-php:centos-8.2.0RC6 sync402/docker-php:centos-8.2
+docker push sync402/docker-php:centos-8.2
+
+docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:centos-8.2.0RC6
+docker tag sync402/docker-php:centos-8.2.0RC6 registry.cn-shanghai.aliyuncs.com/okami/docker-php:centos-8.2.0RC6
+docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php:centos-8.2.0RC6
+docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:centos-8.2.0RC6
+
+docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:centos-8.2
+docker tag sync402/docker-php:centos-8.2.0RC6 registry.cn-shanghai.aliyuncs.com/okami/docker-php:centos-8.2
+docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php:centos-8.2
+docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:centos-8.2
+
 @REM 版本[fpm-pure]构建
 docker build -f 8.2/fpm-pure/Dockerfile -t sync402/docker-php:fpm-pure-8.2.0RC6 .
 docker push sync402/docker-php:fpm-pure-8.2.0RC6

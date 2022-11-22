@@ -66,6 +66,7 @@ class Docker
             $this->buildImage($smallVerion, 'cli-pure');
             $this->buildImage($smallVerion, 'cli-swoole');
             $this->buildImage($smallVerion, 'cli');
+            $this->buildImage($smallVerion, 'centos');
 
             $this->pullImage($smallVerion, 'fpm');
 

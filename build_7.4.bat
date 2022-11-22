@@ -49,6 +49,23 @@ docker tag sync402/docker-php:cli-7.4.33 registry.cn-shanghai.aliyuncs.com/okami
 docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-7.4
 docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-7.4
 
+@REM 版本[centos]构建
+docker build -f 7.4/centos/Dockerfile -t sync402/docker-php:centos-7.4.33 .
+docker push sync402/docker-php:centos-7.4.33
+docker rmi sync402/docker-php:centos-7.4
+docker tag sync402/docker-php:centos-7.4.33 sync402/docker-php:centos-7.4
+docker push sync402/docker-php:centos-7.4
+
+docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:centos-7.4.33
+docker tag sync402/docker-php:centos-7.4.33 registry.cn-shanghai.aliyuncs.com/okami/docker-php:centos-7.4.33
+docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php:centos-7.4.33
+docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:centos-7.4.33
+
+docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:centos-7.4
+docker tag sync402/docker-php:centos-7.4.33 registry.cn-shanghai.aliyuncs.com/okami/docker-php:centos-7.4
+docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php:centos-7.4
+docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:centos-7.4
+
 @REM 版本[fpm-pure]构建
 docker build -f 7.4/fpm-pure/Dockerfile -t sync402/docker-php:fpm-pure-7.4.33 .
 docker push sync402/docker-php:fpm-pure-7.4.33
