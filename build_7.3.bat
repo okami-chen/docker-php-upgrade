@@ -49,22 +49,22 @@ docker tag sync402/docker-php:cli-7.3.24 registry.cn-shanghai.aliyuncs.com/okami
 docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-7.3
 docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:cli-7.3
 
-@REM 版本[centos]构建
-docker build -f 7.3/centos/Dockerfile -t sync402/docker-php:centos-7.3.24 .
-docker push sync402/docker-php:centos-7.3.24
-docker rmi sync402/docker-php:centos-7.3
-docker tag sync402/docker-php:centos-7.3.24 sync402/docker-php:centos-7.3
-docker push sync402/docker-php:centos-7.3
+@REM 版本[fpm-centos]构建
+docker build -f 7.3/fpm-centos/Dockerfile -t sync402/docker-php:fpm-centos-7.3.24 .
+docker push sync402/docker-php:fpm-centos-7.3.24
+docker rmi sync402/docker-php:fpm-centos-7.3
+docker tag sync402/docker-php:fpm-centos-7.3.24 sync402/docker-php:fpm-centos-7.3
+docker push sync402/docker-php:fpm-centos-7.3
 
-docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:centos-7.3.24
-docker tag sync402/docker-php:centos-7.3.24 registry.cn-shanghai.aliyuncs.com/okami/docker-php:centos-7.3.24
-docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php:centos-7.3.24
-docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:centos-7.3.24
+docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-centos-7.3.24
+docker tag sync402/docker-php:fpm-centos-7.3.24 registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-centos-7.3.24
+docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-centos-7.3.24
+docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-centos-7.3.24
 
-docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:centos-7.3
-docker tag sync402/docker-php:centos-7.3.24 registry.cn-shanghai.aliyuncs.com/okami/docker-php:centos-7.3
-docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php:centos-7.3
-docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:centos-7.3
+docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-centos-7.3
+docker tag sync402/docker-php:fpm-centos-7.3.24 registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-centos-7.3
+docker push registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-centos-7.3
+docker rmi registry.cn-shanghai.aliyuncs.com/okami/docker-php:fpm-centos-7.3
 
 @REM 版本[fpm-pure]构建
 docker build -f 7.3/fpm-pure/Dockerfile -t sync402/docker-php:fpm-pure-7.3.24 .
