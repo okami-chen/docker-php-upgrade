@@ -1,4 +1,4 @@
-FROM sync402/docker-php:cli-amqp-8.2
+FROM sync402/docker-php:cli-pure-8.2
 
-RUN install-php-extensions swoole \
+RUN install-php-extensions swoole amqp \
 && rm -rf /var/cache/apk/* /tmp/* /usr/share/man /var/lib/apt/lists/* \
