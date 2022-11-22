@@ -1,0 +1,36 @@
+FROM centos:8.4.2105
+
+ARG namepath=/var/www/html
+
+WORKDIR ${namepath}
+
+RUN rename '.repo' '.repo.bak' /etc/yum.repos.d/*.repo \
+&& curl -o /etc/yum.repos.d/Centos-vault-8.5.2111.repo https://mirrors.aliyun.com/repo/Centos-vault-8.5.2111.repo \
+&& curl -o /etc/yum.repos.d/epel-archive-8.repo https://mirrors.aliyun.com/repo/epel-archive-8.repo \
+&& sed -i 's/mirrors.cloud.aliyuncs.com/url_tmp/g'  /etc/yum.repos.d/Centos-vault-8.5.2111.repo \
+&& sed -i 's/mirrors.aliyun.com/mirrors.cloud.aliyuncs.com/g' /etc/yum.repos.d/Centos-vault-8.5.2111.repo \
+&& sed -i 's/url_tmp/mirrors.aliyun.com/g' /etc/yum.repos.d/Centos-vault-8.5.2111.repo \
+&& sed -i 's/mirrors.aliyun.com/mirrors.cloud.aliyuncs.com/g' /etc/yum.repos.d/epel-archive-8.repo \
+&& dnf -y clean all \
+&& dnf -y makecache
+
+
+RUN dnf -y install epel-release \
+&& dnf -y update epel-release \
+&& dnf -y clean all \
+&& dnf -y makecache \
+&& dnf -y install https://rpms.remirepo.net/enterprise/remi-release-8.rpm \
+&& dnf -y module enable php:remi-8.0\
+&& dnf -y install php php-curl php-dom php-exif php-fileinfo php-fpm php-gd php-hash php-json php-mbstring php-mysqli \
+php-openssl php-pcre php-xml libsodium php-swoole php-redis php-amqp \
+&& mkdir -p /run/php-fpm \
+&& dnf -y install http://nginx.org/packages/centos/8/x86_64/RPMS/nginx-1.22.1-1.el8.ngx.x86_64.rpm \
+&& mv laravel.conf /etc/nginx/conf.d/default.conf \
+&& dnf -y install composer \
+&& composer install --no-interaction --no-plugins --no-scripts --prefer-dist --ignore-platform-req=ext-bcmath \
+&& chmod -R 777 storage \
+&& chmod -R 777 bootstrap
+
+CMD php-fpm && /usr/sbin/nginx -g 'daemon off;'
+
+EXPOSE 8080
