@@ -34,4 +34,4 @@ php-swoole php-redis php-amqp \
 
 CMD ["php-fpm && /usr/sbin/nginx","-g","'daemon off;'"]
 
-EXPOSE 8080
+EXPOSE 80

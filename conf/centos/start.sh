@@ -8,4 +8,6 @@ fi
 
 /usr/bin/supervisord -c /etc/supervisord.conf
 
+sleep 3s
+
 /usr/sbin/nginx -g 'daemon off;'

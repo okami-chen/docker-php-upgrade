@@ -4,9 +4,11 @@ ARG WORK_DIR=/var/www/html
 ARG NGINX_VERSION=1.22.1-1
 ARG PHP_VERSION=8.1
 ARG CENTOS_VERSION=8.5.2111
+ENV SUPERVISOR_START=true
 ENV COMPOSER_ALLOW_SUPERUSER 1
 COPY ./conf/centos/start.sh /opt/start.sh
 COPY ./conf/centos/octane.conf /var/www/html/octane.conf
+COPY ./conf/centos/octane.ini /var/www/html/octane.ini
 
 WORKDIR ${WORK_DIR}
 
@@ -27,12 +29,13 @@ php-json php-mbstring php-mysqli php-pdo_mysql php-openssl php-sockets php-sysvs
 php-pcre php-xml libsodium php-intl php-pecl-apcu php-zip php-bz2 php-bcmath php-mcrypt php-gettext  \
 php-pcntl php-calendar php-igbinary php-imagick php-ldap php-lzf php-odbc php-protobuf php-snappy \
 php-rdkafka php-shmop php-soap php-tidy php-xlswriter php-xmlrpc php-pdo_sqlite \
-php-swoole php-redis php-amqp \
+php-swoole php-redis php-amqp composer supervisor \
 && dnf -y install http://nginx.org/packages/centos/8/x86_64/RPMS/nginx-${NGINX_VERSION}.el8.ngx.x86_64.rpm \
 && mv octane.conf /etc/nginx/conf.d/default.conf \
-&& dnf -y install composer supervisor && dnf -y clean all && chmod +x /opt/*.sh
+&& mv octane.ini /etc/supervisord.d/octane.ini \
+&& dnf -y clean all && chmod +x /opt/*.sh
 
-EXPOSE 8080
+EXPOSE 80 8000
 
 CMD ["/opt/start.sh"]
 
