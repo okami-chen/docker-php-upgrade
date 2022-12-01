@@ -1,7 +1,7 @@
 <?php
 
 $version = [
-    '5.6.40', '7.2.34', '7.3.24', '7.4.33', '8.0.25', '8.1.12', '8.2.0RC6'
+    '8.0.26', '8.1.13', '8.2.0RC7'
 ];
 
 class Docker
@@ -63,26 +63,26 @@ class Docker
 
             $this->pullImage($smallVerion, 'cli');
 
-            $this->buildImage($smallVerion, 'cli-centos');
             $this->buildImage($smallVerion, 'cli-pure');
             $this->buildImage($smallVerion, 'cli-swoole');
             $this->buildImage($smallVerion, 'cli');
+            $this->buildImage($smallVerion, 'cli-centos');
 
             $this->pullImage($smallVerion, 'fpm');
 
-            $this->buildImage($smallVerion, 'fpm-centos');
             $this->buildImage($smallVerion, 'fpm-pure');
             $this->buildImage($smallVerion, 'fpm');
+            $this->buildImage($smallVerion, 'fpm-centos');
 
             $this->buildImage($smallVerion, 'nginx');
             $this->buildImage($smallVerion, 'nginx-pure');
             $this->buildImage($smallVerion, 'octane');
             $this->buildImage($smallVerion, 'octane-pure');
 
-            $data = implode("\r\n", $this->cmds);
+            $data = implode(PHP_EOL, $this->cmds);
             file_put_contents(__DIR__ . '/build_' . $this->bigVersion . '.' . $this->smallVersion . '.bat', $data);
-            file_put_contents(__DIR__ . '/pull.bat', implode("\r\n", $this->images));
-            file_put_contents(__DIR__ . '/push.bat', implode("\r\n", $this->push));
+            file_put_contents(__DIR__ . '/pull.bat', implode(PHP_EOL, $this->images));
+            file_put_contents(__DIR__ . '/push.bat', implode(PHP_EOL, $this->push));
             $this->cmds = [];
         }
     }
@@ -113,14 +113,14 @@ class Docker
         }
 
         $baseImage = $this->namespace . ':' . $buildType . '-' . $fullVerion;
-        $this->cmds[] = '@REM 版本[' . $buildType . ']构建';
+        $this->cmds[] = '#@REM 版本[' . $buildType . ']构建';
 
         $this->cmds[] = 'docker build -f ' . $pushVersion . '/' . $buildType . '/Dockerfile -t ' . $baseImage . ' .';
         $this->cmds[] = 'docker push ' . $baseImage;
         $this->push[] = 'docker push ' . $baseImage;
 
         if ($this->isLastVersion) {
-            $this->cmds[] = 'docker rmi ' . $this->namespace . ':' . $buildType . '-' . $pushVersion;
+//            $this->cmds[] = 'docker rmi ' . $this->namespace . ':' . $buildType . '-' . $pushVersion;
             $this->cmds[] = 'docker tag ' . $baseImage . ' ' . $this->namespace . ':' . $buildType . '-' . $pushVersion;
             $this->cmds[] = 'docker push ' . $this->namespace . ':' . $buildType . '-' . $pushVersion;
             $this->push[] = 'docker push ' . $this->namespace . ':' . $buildType . '-' . $pushVersion;
@@ -131,7 +131,7 @@ class Docker
 
         foreach ($this->namespaces as $namespace) {
 
-            $this->cmds[] = 'docker rmi ' . $namespace . ':' . $buildType . '-' . $fullVerion;
+//            $this->cmds[] = 'docker rmi ' . $namespace . ':' . $buildType . '-' . $fullVerion;
             $this->cmds[] = 'docker tag ' . $baseImage . ' ' . $namespace . ':' . $buildType . '-' . $fullVerion;
             $this->cmds[] = 'docker push ' . $namespace . ':' . $buildType . '-' . $fullVerion;
             $this->cmds[] = 'docker rmi ' . $namespace . ':' . $buildType . '-' . $fullVerion;
