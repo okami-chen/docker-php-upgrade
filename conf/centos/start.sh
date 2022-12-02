@@ -11,6 +11,8 @@ mkdir -p /var/www/html/storage/app/
 mkdir -p /var/www/html/storage/framework/
 chmod 777 -R var/www/html/storage/
 
+echo "COLUMNS=500" >> /root/.bashrc
+
 /usr/bin/supervisord -c /etc/supervisord.conf
 
 sleep 3s
