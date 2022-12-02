@@ -10,5 +10,9 @@ chown www-data:www-data /home/wwwlogs
 
 cat /usr/local/etc/php/php.ini-production > /usr/local/etc/php/php.ini
 cat /run/nginx/nginx.conf > /etc/nginx/nginx.conf
+mkdir -p /var/www/html/storage/logs/
+mkdir -p /var/www/html/storage/app/
+mkdir -p /var/www/html/storage/framework/
+chmod 777 -R var/www/html/storage/
 /usr/bin/supervisord -c /etc/supervisord.conf
 nginx -g "daemon off;"
