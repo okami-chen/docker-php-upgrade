@@ -13,7 +13,7 @@ cat /run/nginx/nginx.conf > /etc/nginx/nginx.conf
 mkdir -p /var/www/html/storage/logs/
 mkdir -p /var/www/html/storage/app/
 mkdir -p /var/www/html/storage/framework/
-chmod 777 -R var/www/html/storage/
+chmod 777 -R /var/www/html/storage/
 echo "COLUMNS=500" >> /root/.bashrc
 
 /usr/bin/supervisord -c /etc/supervisord.conf
