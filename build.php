@@ -1,7 +1,7 @@
 <?php
 
 $version = [
-    '8.0.26', '8.1.13', '8.2.0RC7'
+    '7.4.33','8.0.26', '8.1.13', '8.2.0RC7'
 ];
 
 class Docker
@@ -63,21 +63,21 @@ class Docker
 
             $this->pullImage($smallVerion, 'cli');
 
-            $this->buildImage($smallVerion, 'cli-pure');
-            $this->buildImage($smallVerion, 'cli-swoole');
+//            $this->buildImage($smallVerion, 'cli-pure');
+//            $this->buildImage($smallVerion, 'cli-swoole');
             $this->buildImage($smallVerion, 'cli');
-            $this->buildImage($smallVerion, 'cli-centos');
+//            $this->buildImage($smallVerion, 'cli-centos');
 
             $this->pullImage($smallVerion, 'fpm');
 
-            $this->buildImage($smallVerion, 'fpm-pure');
+//            $this->buildImage($smallVerion, 'fpm-pure');
             $this->buildImage($smallVerion, 'fpm');
-            $this->buildImage($smallVerion, 'fpm-centos');
+//            $this->buildImage($smallVerion, 'fpm-centos');
 
             $this->buildImage($smallVerion, 'nginx');
-            $this->buildImage($smallVerion, 'nginx-pure');
+//            $this->buildImage($smallVerion, 'nginx-pure');
             $this->buildImage($smallVerion, 'octane');
-            $this->buildImage($smallVerion, 'octane-pure');
+//            $this->buildImage($smallVerion, 'octane-pure');
 
             $data = implode(PHP_EOL, $this->cmds);
             file_put_contents(__DIR__ . '/build_' . $this->bigVersion . '.' . $this->smallVersion . '.bat', $data);
