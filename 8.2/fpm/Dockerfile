@@ -1,7 +1,7 @@
 FROM php:8.2-fpm-alpine
 
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
-COPY ./conf/nginx/php-fpm.sh /tmp/php-fpm.sh
+COPY ./conf/php/fpm.sh /tmp/php-fpm.sh
 
 ENV TIMEZONE=${timezone:-"Asia/Shanghai"} \
     APP_ENV=production \

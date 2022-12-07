@@ -1,6 +1,7 @@
 FROM php:8.2-cli-alpine
 
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
+COPY ./conf/php/cli.sh /tmp/cli.sh
 
 ENV TIMEZONE=${timezone:-"Asia/Shanghai"} \
     APP_ENV=production \
@@ -15,6 +16,5 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
 pdo_mysql mysqli bcmath sockets zip bz2 mcrypt redis opcache @composer amqp swoole mongodb \
 && composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/ \
 && apk update && apk upgrade && apk add --no-cache bash bash-completion supervisor \
-&& rm -rf /var/cache/apk/* /tmp/* /usr/share/man /var/lib/apt/lists/* \
-&& mkdir -p /etc/supervisor.d/ && cat /usr/local/etc/php/php.ini-production > /usr/local/etc/php/php.ini \
-&& echo "swoole.use_shortname = 'Off'" > /usr/local/etc/php/conf.d/docker-php-ext-swoole-ext.ini
+&& chmod + /tmp/cli.sh && /bin/bash /tmp/cli.sh \
+&& rm -rf /var/cache/apk/* /tmp/* /usr/share/man /var/lib/apt/lists/*
