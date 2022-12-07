@@ -25,5 +25,7 @@ if [ -d /var/www/html/supervisor.d/ ];then
     cp /var/www/html/supervisor.d/*.ini /etc/supervisor.d
 fi
 
-php-fpm -g "daemon on;"
+# For PHP_FPM
+sed -i 's/no/yes/g' /usr/local/etc/php-fpm.d/zz-docker.conf
+php-fpm
 nginx -g "daemon off;"
