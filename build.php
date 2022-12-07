@@ -12,6 +12,9 @@ class Docker
 
     protected array $images = [
         'docker login --username=ap3747a7y@aliyun.com --password=dehua2011 registry.cn-shanghai.aliyuncs.com',
+        'docker login --username=ap3747a7y@aliyun.com --password=dehua2011 registry.cn-beijing.aliyuncs.com',
+        'docker login --username=ap3747a7y@aliyun.com --password=dehua2011 registry.cn-hangzhou.aliyuncs.com',
+        'docker login --username=ap3747a7y@aliyun.com --password=dehua2011 registry.cn-guangzhou.aliyuncs.com',
         'docker login --username=sync402 --password=dehua2011',
         ''
     ];
@@ -24,6 +27,9 @@ class Docker
 
     protected array $namespaces = [
         'registry.cn-shanghai.aliyuncs.com/okami/docker-php',
+        'registry.cn-beijing.aliyuncs.com/okami/docker-php',
+        'registry.cn-hangzhou.aliyuncs.com/okami/docker-php',
+        'registry.cn-guangzhou.aliyuncs.com/okami/docker-php',
     ];
 
     /**
@@ -52,7 +58,9 @@ class Docker
      */
     public function build(array|string $version, $isLastVersion = true)
     {
+
         $this->isLastVersion = $isLastVersion;
+
         if (!is_array($version)) {
             $version = [$version];
         }
@@ -138,11 +146,12 @@ class Docker
 
             if ($this->isLastVersion) {
                 $this->cmds[] = '';
-                $this->cmds[] = 'docker rmi ' . $namespace . ':' . $buildType . '-' . $pushVersion;
+//                $this->cmds[] = 'docker rmi ' . $namespace . ':' . $buildType . '-' . $pushVersion;
                 $this->cmds[] = 'docker tag ' . $baseImage . ' ' . $namespace . ':' . $buildType . '-' . $pushVersion;
                 $this->cmds[] = 'docker push ' . $namespace . ':' . $buildType . '-' . $pushVersion;
                 $this->cmds[] = 'docker rmi ' . $namespace . ':' . $buildType . '-' . $pushVersion;
             }
+            $this->cmds[] = '';
         }
         $this->cmds[] = '';
     }

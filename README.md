@@ -1,23 +1,82 @@
-# docker-build
-
-#### 介绍
-{**以下是 Gitee 平台说明，您可以替换此简介**
-Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用 Gitee 实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
-
-#### 软件架构
-软件架构说明
+# docker-php
 
 
-#### 安装教程
+#### Octane
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+Run With `/opt/start.sh`
 
-#### 使用说明
+```
+#!/usr/bin/env bash
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+chmod +x /opt/*.sh
+if [ -f "/opt/app.sh" ];then
+  /bin/bash /opt/app.sh
+fi
+
+# For PHP And Nginx
+cat /usr/local/etc/php/php.ini-production > /usr/local/etc/php/php.ini
+cat /run/nginx/nginx.conf > /etc/nginx/nginx.conf
+
+mkdir /home/wwwlogs
+chown www-data:www-data /home/wwwlogs
+
+# For Laravel
+mkdir -p /var/www/html/storage/logs/
+mkdir -p /var/www/html/storage/app/
+mkdir -p /var/www/html/storage/framework/
+chmod 777 -R /var/www/html/storage/
+
+# For System
+echo "COLUMNS=500" >> /root/.bashrc
+echo 'alias ll="ls -la"' >> /root/.bashrc
+
+# For Supervisor
+if [ -d /var/www/html/supervisor.d/ ];then
+    cp /var/www/html/supervisor.d/*.ini /etc/supervisor.d
+fi
+
+/usr/bin/supervisord -c /etc/supervisord.conf
+
+nginx -g "daemon off;"
+
+```
+
+
+#### Nginx
+
+Run With `/opt/start.sh`
+
+```
+#!/usr/bin/env bash
+
+chmod +x /opt/*.sh
+if [ -f "/opt/app.sh" ];then
+  /bin/bash /opt/app.sh
+fi
+
+# For Nginx And PHP-FPM
+cat /usr/local/etc/php/php.ini-production > /usr/local/etc/php/php.ini
+cat /run/nginx/nginx.conf > /etc/nginx/nginx.conf
+
+# For Laravel
+mkdir /home/wwwlogs && chown www-data:www-data /home/wwwlogs
+mkdir -p /var/www/html/storage/logs/
+mkdir -p /var/www/html/storage/app/
+mkdir -p /var/www/html/storage/framework/
+chmod 777 -R /var/www/html/storage/
+
+# For System
+echo "COLUMNS=500" >> /root/.bashrc
+echo 'alias ll="ls -la"' >> /root/.bashrc
+
+# For Supervisor
+if [ -d /var/www/html/supervisor.d/ ];then
+    cp /var/www/html/supervisor.d/*.ini /etc/supervisor.d
+fi
+
+php-fpm -g "daemon on;"
+nginx -g "daemon off;"
+
+```
+
 
