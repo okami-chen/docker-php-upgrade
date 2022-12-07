@@ -12,6 +12,7 @@ mkdir -p /var/www/html/storage/framework/
 chmod 777 -R /var/www/html/storage/
 
 echo "COLUMNS=500" >> /root/.bashrc
+echo 'alias ll="ls -la"' >> /root/.bashrc
 
 /usr/bin/supervisord -c /etc/supervisord.conf
 
