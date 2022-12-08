@@ -3,8 +3,8 @@ FROM php:8.0-cli-alpine
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 COPY ./conf/php/cli.sh /tmp/cli.sh
 
+ARG DOCKER_ENV=production
 ENV TIMEZONE=${timezone:-"Asia/Shanghai"} \
-    APP_ENV=production \
     LANG=C.UTF-8 \
     COMPOSER_ALLOW_SUPERUSER=1
 

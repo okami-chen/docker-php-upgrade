@@ -3,8 +3,8 @@ FROM php:7.4-fpm-alpine
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 COPY ./conf/php/fpm.sh /tmp/php-fpm.sh
 
+ARG DOCKER_ENV=production
 ENV TIMEZONE=${timezone:-"Asia/Shanghai"} \
-    APP_ENV=production \
     LANG=C.UTF-8 \
     COMPOSER_ALLOW_SUPERUSER=1
 
