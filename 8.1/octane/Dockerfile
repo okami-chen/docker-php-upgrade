@@ -10,7 +10,7 @@ RUN apk update && apk --no-cache add nginx && mkdir -p /run/nginx \
 && rm -rf /var/cache/apk/* /tmp/* /usr/share/man /var/lib/apt/lists/* \
 && chmod +x /opt/start.sh
 
-EXPOSE 80
+EXPOSE 80 8000
 
 CMD ["/opt/start.sh"]
 
