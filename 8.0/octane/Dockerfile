@@ -4,6 +4,10 @@ COPY ./conf/octane/start.sh /opt/start.sh
 COPY ./conf/octane/nginx.conf /run/nginx/nginx.conf
 COPY ./conf/octane/octane.ini /etc/supervisor.d/octane.ini
 
+ENV OCTANE_WORKERS=4 \
+    OCTANE_TASKS=4 \
+    OCTANE_MAX_REQUESTS=2000
+
 WORKDIR /tmp
 
 RUN apk update && apk --no-cache add nginx && mkdir -p /run/nginx \
