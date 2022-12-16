@@ -85,6 +85,7 @@ class Docker
 
             $this->buildImage($smallVerion, 'nginx');
             $this->buildImage($smallVerion, 'octane');
+            $this->buildImage($smallVerion, 'web');
 
             $data = implode(PHP_EOL, $this->cmds);
             file_put_contents(__DIR__ . '/build_' . $this->bigVersion . '.' . $this->smallVersion . '.bat', $data);
@@ -123,8 +124,6 @@ class Docker
 
         $baseImage = $this->namespace . ':' . $buildType . '-' . $fullVerion;
 
-        $this->cmds[] = '#@REM 版本[' . $buildType . ']构建';
-
         $this->cmds[] = 'docker build -f '.$dockerFile.' -t ' . $baseImage . ' .';
         $this->cmds[] = 'docker push ' . $baseImage;
         $this->push[] = 'docker push ' . $baseImage;
@@ -155,6 +154,7 @@ class Docker
             }
             $this->cmds[] = '';
         }
+        $this->cmds[] = 'docker rmi '.$baseImage;
         $this->cmds[] = '';
     }
 }
