@@ -151,6 +151,7 @@ class Docker
             $this->cmds[] = '';
         }
         $this->cmds[] = 'docker rmi '.$baseImage;
+        $this->cmds[] = 'docker rmi '.$this->namespace . ':' . $buildType . '-' . $pushVersion;
         $this->cmds[] = '';
     }
 }

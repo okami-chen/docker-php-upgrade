@@ -36,6 +36,7 @@ docker push registry.cn-guangzhou.aliyuncs.com/okami/docker-php:cli-8.2
 docker rmi registry.cn-guangzhou.aliyuncs.com/okami/docker-php:cli-8.2
 
 docker rmi sync402/docker-php:cli-8.2.0
+docker rmi sync402/docker-php:cli-8.2
 
 docker build -f Dockerfile-8.2-octane -t sync402/docker-php:octane-8.2.0 .
 docker push sync402/docker-php:octane-8.2.0
@@ -75,6 +76,7 @@ docker push registry.cn-guangzhou.aliyuncs.com/okami/docker-php:octane-8.2
 docker rmi registry.cn-guangzhou.aliyuncs.com/okami/docker-php:octane-8.2
 
 docker rmi sync402/docker-php:octane-8.2.0
+docker rmi sync402/docker-php:octane-8.2
 
 docker build -f Dockerfile-8.2-web -t sync402/docker-php:web-8.2.0 .
 docker push sync402/docker-php:web-8.2.0
@@ -114,3 +116,4 @@ docker push registry.cn-guangzhou.aliyuncs.com/okami/docker-php:web-8.2
 docker rmi registry.cn-guangzhou.aliyuncs.com/okami/docker-php:web-8.2
 
 docker rmi sync402/docker-php:web-8.2.0
+docker rmi sync402/docker-php:web-8.2
