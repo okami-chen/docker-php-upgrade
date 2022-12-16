@@ -45,6 +45,12 @@ class Docker
     protected int $smallVersion = 0;
 
     /**
+     * 小版本号
+     * @var int $smallVersion
+     */
+    protected int $lastVersion = 0;
+
+    /**
      * 当前版本最新
      * @var bool $isLastVersion
      */
@@ -67,25 +73,18 @@ class Docker
 
         foreach ($version as $smallVerion) {
 
-            list($this->bigVersion, $this->smallVersion) = explode(".", $smallVerion);
+            list($this->bigVersion, $this->smallVersion, $this->lastVersion) = explode(".", $smallVerion);
 
             $this->pullImage($smallVerion, 'cli');
 
-//            $this->buildImage($smallVerion, 'cli-pure');
-//            $this->buildImage($smallVerion, 'cli-swoole');
             $this->buildImage($smallVerion, 'cli');
-//            $this->buildImage($smallVerion, 'cli-centos');
 
             $this->pullImage($smallVerion, 'fpm');
 
-//            $this->buildImage($smallVerion, 'fpm-pure');
             $this->buildImage($smallVerion, 'fpm');
-//            $this->buildImage($smallVerion, 'fpm-centos');
 
             $this->buildImage($smallVerion, 'nginx');
-//            $this->buildImage($smallVerion, 'nginx-pure');
             $this->buildImage($smallVerion, 'octane');
-//            $this->buildImage($smallVerion, 'octane-pure');
 
             $data = implode(PHP_EOL, $this->cmds);
             file_put_contents(__DIR__ . '/build_' . $this->bigVersion . '.' . $this->smallVersion . '.bat', $data);
@@ -116,14 +115,17 @@ class Docker
 
         $pushVersion = $this->bigVersion . '.' . $this->smallVersion;
 
-        if (!file_exists($pushVersion . '/' . $buildType . '/Dockerfile')) {
+        $dockerFile = 'Dockerfile-'.$pushVersion.'-'.$buildType;
+
+        if (!file_exists($dockerFile)) {
             return;
         }
 
         $baseImage = $this->namespace . ':' . $buildType . '-' . $fullVerion;
+
         $this->cmds[] = '#@REM 版本[' . $buildType . ']构建';
 
-        $this->cmds[] = 'docker build -f ' . $pushVersion . '/' . $buildType . '/Dockerfile -t ' . $baseImage . ' .';
+        $this->cmds[] = 'docker build -f '.$dockerFile.' -t ' . $baseImage . ' .';
         $this->cmds[] = 'docker push ' . $baseImage;
         $this->push[] = 'docker push ' . $baseImage;
 
