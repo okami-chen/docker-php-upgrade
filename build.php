@@ -78,8 +78,6 @@ class Docker
             $this->pullImage($smallVerion, 'cli');
             $this->pullImage($smallVerion, 'fpm');
 
-
-            $this->buildImage($smallVerion, 'cli');
             $this->buildImage($smallVerion, 'octane');
             $this->buildImage($smallVerion, 'web');
 
@@ -150,8 +148,9 @@ class Docker
             }
             $this->cmds[] = '';
         }
-        $this->cmds[] = 'docker rmi '.$baseImage;
         $this->cmds[] = 'docker rmi '.$this->namespace . ':' . $buildType . '-' . $pushVersion;
+        $this->cmds[] = 'docker rmi '.$baseImage;
+
         $this->cmds[] = '';
     }
 }
