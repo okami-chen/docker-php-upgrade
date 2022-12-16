@@ -13,7 +13,7 @@ ENV TIMEZONE=${timezone:-"Asia/Shanghai"} \
     OCTANE_WORKERS=4 \
     OCTANE_TASKS=4 \
     OCTANE_MAX_REQUESTS=2000 \
-    OCTANE_START = true
+    OCTANE_START=true
 
 RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositories && apk update \
 && apk add -U tzdata \
