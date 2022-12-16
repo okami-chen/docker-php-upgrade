@@ -76,14 +76,10 @@ class Docker
             list($this->bigVersion, $this->smallVersion, $this->lastVersion) = explode(".", $smallVerion);
 
             $this->pullImage($smallVerion, 'cli');
-
-            $this->buildImage($smallVerion, 'cli');
-
             $this->pullImage($smallVerion, 'fpm');
 
-            $this->buildImage($smallVerion, 'fpm');
 
-            $this->buildImage($smallVerion, 'nginx');
+            $this->buildImage($smallVerion, 'cli');
             $this->buildImage($smallVerion, 'octane');
             $this->buildImage($smallVerion, 'web');
 
