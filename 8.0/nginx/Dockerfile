@@ -1,4 +1,4 @@
-FROM sync402/docker-php:fpm-8.0
+FROM registry.cn-beijing.aliyuncs.com/okami/docker-php:fpm-8.0
 
 COPY ./conf/nginx/start.sh /opt/start.sh
 COPY ./conf/nginx/nginx.conf /run/nginx/nginx.conf
