@@ -24,7 +24,7 @@ if [ -d "/var/www/html/bootstrap/cache" ];then
 fi
 
 # For System
-echo "COLUMNS=500" >> /root/.bashrc
+echo "COLUMNS=2000" >> /root/.bashrc
 echo 'alias ll="ls -la"' >> /root/.bashrc
 
 # For Supervisor
