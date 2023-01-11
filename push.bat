@@ -1,3 +1,11 @@
+docker rmi php:7.4-cli-alpine
+docker rmi php:7.4-fpm-alpine
+docker push sync402/docker-php:octane-7.4.33
+docker push sync402/docker-php:octane-7.4
+docker rmi sync402/docker-php:octane-7.4
+docker push sync402/docker-php:web-7.4.33
+docker push sync402/docker-php:web-7.4
+docker rmi sync402/docker-php:web-7.4
 docker rmi php:8.0-cli-alpine
 docker rmi php:8.0-fpm-alpine
 docker push sync402/docker-php:octane-8.0.27
