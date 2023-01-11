@@ -3,9 +3,10 @@ FROM php:8.0-fpm-alpine
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 COPY ./conf/php/fpm.sh /tmp/php-fpm.sh
 COPY ./conf/nginx/start.sh /opt/start.sh
-COPY ./conf/nginx/runtime.sh /opt/runtime.sh
+COPY ./conf/shell/runtime.sh /opt/runtime.sh
 COPY ./conf/nginx/nginx.conf /run/nginx/nginx.conf
 
+ARG DOCKER_ENV=production
 ENV TIMEZONE=${timezone:-"Asia/Shanghai"} \
     LANG=C.UTF-8 \
     COMPOSER_ALLOW_SUPERUSER=1
@@ -20,7 +21,7 @@ pdo_mysql mysqli bcmath sockets zip bz2 mcrypt redis opcache @composer amqp mong
 && apk update && apk upgrade && apk add --no-cache bash bash-completion supervisor nginx \
 && chmod +x /tmp/php-fpm.sh && /bin/bash /tmp/php-fpm.sh \
 && rm -rf /var/cache/apk/* /tmp/* /usr/share/man /var/lib/apt/lists/* \
-&& chmod +x /opt/start.sh && mkdir -p /run/nginx
+&& chmod +x /opt/*.sh && mkdir -p /run/nginx
 
 EXPOSE 80
 

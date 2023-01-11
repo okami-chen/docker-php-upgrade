@@ -3,6 +3,7 @@ FROM php:8.1-cli-alpine
 COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 COPY ./conf/php/cli.sh /tmp/cli.sh
 COPY ./conf/octane/start.sh /opt/start.sh
+COPY ./conf/shell/runtime.sh /opt/runtime.sh
 COPY ./conf/octane/nginx.conf /run/nginx/nginx.conf
 COPY ./conf/octane/octane.ini /etc/supervisor.d/octane.ini
 
@@ -25,7 +26,7 @@ pdo_mysql mysqli bcmath sockets zip bz2 mcrypt redis opcache @composer amqp swoo
 && apk update && apk upgrade && apk add --no-cache bash bash-completion supervisor nginx \
 && chmod + /tmp/cli.sh && /bin/bash /tmp/cli.sh mkdir -p /run/nginx \
 && rm -rf /var/cache/apk/* /tmp/* /usr/share/man /var/lib/apt/lists/* \
-&& chmod +x /opt/start.sh
+&& chmod +x /opt/*.sh
 
 EXPOSE 80 8000
 

@@ -33,8 +33,8 @@ fi
 # For PHP_FPM
 sed -i 's/no/yes/g' /usr/local/etc/php-fpm.d/zz-docker.conf
 
-if [ -f "/opt/runtime.sh" ];then
-  /bin/bash /opt/runtime.sh
+if [ -f "/opt/run.sh" ];then
+  /bin/bash /opt/run.sh
 fi
 
 php-fpm
