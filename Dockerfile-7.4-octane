@@ -26,7 +26,7 @@ pdo_mysql mysqli bcmath sockets zip bz2 mcrypt redis opcache @composer amqp swoo
 && apk update && apk upgrade && apk add --no-cache bash bash-completion supervisor nginx \
 && chmod + /tmp/cli.sh && /bin/bash /tmp/cli.sh mkdir -p /run/nginx \
 && rm -rf /var/cache/apk/* /tmp/* /usr/share/man /var/lib/apt/lists/* \
-&& chmod +x /opt/start.sh
+&& chmod +x /opt/*.sh
 
 EXPOSE 80 8000
 
