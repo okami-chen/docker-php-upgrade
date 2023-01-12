@@ -12,13 +12,15 @@ if [ -d "/var/www/html/supervisor.d/${DOCKER_ENV}" ];then
     echo -e "\033[42;37m copy supervisor.d/${DOCKER_ENV}/*.ini To  /etc/supervisor.d \033[0m"
 fi
 
-echo -e "\033[42;37m composer install start \033[0m"
+if [ -f "/var/www/html/composer.json" ];then
+    echo -e "\033[42;37m composer install start \033[0m"
+    composer install --optimize-autoloader --no-dev -vv
+    echo -e "\033[42;37m composer install finish \033[0m"
+fi
 
-composer install --optimize-autoloader --no-dev -vv
-
-echo -e "\033[42;37m composer install finish \033[0m"
-
-chown -R www-data:www-data  /var/www/html/
+if [ -d "/var/www/html" ];then
+    chown -R www-data:www-data  /var/www/html/
+fi
 
 # For Nginx
 if [ -f "/usr/local/etc/php-fpm.d/www.conf" ];then
