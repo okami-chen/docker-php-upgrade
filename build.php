@@ -150,6 +150,11 @@ class Docker
         }
         $this->cmds[] = 'docker rmi '.$this->namespace . ':' . $buildType . '-' . $pushVersion;
         $this->cmds[] = 'docker rmi '.$baseImage;
+        $this->cmds[] = '';
+        $this->cmds[] = 'docker rmi php:' . $this->bigVersion . '.' . $this->smallVersion . '-cli-alpine';
+        $this->cmds[] = 'docker rmi php:' . $this->bigVersion . '.' . $this->smallVersion . '-fpm-alpine';
+        $this->cmds[] = 'docker rmi php:' . $this->bigVersion . '.' . $this->smallVersion .'.'.$this->lastVersion. '-cli-alpine';
+        $this->cmds[] = 'docker rmi php:' . $this->bigVersion . '.' . $this->smallVersion .'.'.$this->lastVersion. '-fpm-alpine';
 
         $this->cmds[] = '';
     }

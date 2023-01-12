@@ -38,6 +38,11 @@ docker rmi registry.cn-guangzhou.aliyuncs.com/okami/docker-php:octane-7.4
 docker rmi sync402/docker-php:octane-7.4
 docker rmi sync402/docker-php:octane-7.4.33
 
+docker rmi php:7.4-cli-alpine
+docker rmi php:7.4-fpm-alpine
+docker rmi php:7.4.33-cli-alpine
+docker rmi php:7.4.33-fpm-alpine
+
 docker build -f Dockerfile-7.4-web -t sync402/docker-php:web-7.4.33 .
 docker push sync402/docker-php:web-7.4.33
 docker tag sync402/docker-php:web-7.4.33 sync402/docker-php:web-7.4
@@ -77,3 +82,8 @@ docker rmi registry.cn-guangzhou.aliyuncs.com/okami/docker-php:web-7.4
 
 docker rmi sync402/docker-php:web-7.4
 docker rmi sync402/docker-php:web-7.4.33
+
+docker rmi php:7.4-cli-alpine
+docker rmi php:7.4-fpm-alpine
+docker rmi php:7.4.33-cli-alpine
+docker rmi php:7.4.33-fpm-alpine
