@@ -4,6 +4,18 @@ docker login --username=ap3747a7y@aliyun.com --password=dehua2011 registry.cn-ha
 docker login --username=ap3747a7y@aliyun.com --password=dehua2011 registry.cn-guangzhou.aliyuncs.com
 docker login --username=sync402 --password=dehua2011
 
+docker pull php:7.2.34-cli-alpine
+docker tag php:7.2.34-cli-alpine php:7.2-cli-alpine
+
+docker pull php:7.2.34-fpm-alpine
+docker tag php:7.2.34-fpm-alpine php:7.2-fpm-alpine
+
+docker pull php:7.3.33-cli-alpine
+docker tag php:7.3.33-cli-alpine php:7.3-cli-alpine
+
+docker pull php:7.3.33-fpm-alpine
+docker tag php:7.3.33-fpm-alpine php:7.3-fpm-alpine
+
 docker pull php:7.4.33-cli-alpine
 docker tag php:7.4.33-cli-alpine php:7.4-cli-alpine
 
