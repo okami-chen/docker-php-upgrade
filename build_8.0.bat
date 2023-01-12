@@ -38,11 +38,6 @@ docker rmi registry.cn-guangzhou.aliyuncs.com/okami/docker-php:octane-8.0
 docker rmi sync402/docker-php:octane-8.0
 docker rmi sync402/docker-php:octane-8.0.27
 
-docker rmi php:8.0-cli-alpine
-docker rmi php:8.0-fpm-alpine
-docker rmi php:8.0.27-cli-alpine
-docker rmi php:8.0.27-fpm-alpine
-
 docker build -f Dockerfile-8.0-web -t sync402/docker-php:web-8.0.27 .
 docker push sync402/docker-php:web-8.0.27
 docker tag sync402/docker-php:web-8.0.27 sync402/docker-php:web-8.0
