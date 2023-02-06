@@ -35,6 +35,30 @@ docker tag sync402/docker-php:octane-7.2.34 registry.cn-guangzhou.aliyuncs.com/o
 docker push registry.cn-guangzhou.aliyuncs.com/okami/docker-php:octane-7.2
 docker rmi registry.cn-guangzhou.aliyuncs.com/okami/docker-php:octane-7.2
 
+docker tag sync402/docker-php:octane-7.2.34 registry.cn-chengdu.aliyuncs.com/okami/docker-php:octane-7.2.34
+docker push registry.cn-chengdu.aliyuncs.com/okami/docker-php:octane-7.2.34
+docker rmi registry.cn-chengdu.aliyuncs.com/okami/docker-php:octane-7.2.34
+
+docker tag sync402/docker-php:octane-7.2.34 registry.cn-chengdu.aliyuncs.com/okami/docker-php:octane-7.2
+docker push registry.cn-chengdu.aliyuncs.com/okami/docker-php:octane-7.2
+docker rmi registry.cn-chengdu.aliyuncs.com/okami/docker-php:octane-7.2
+
+docker tag sync402/docker-php:octane-7.2.34 registry.cn-shenzhen.aliyuncs.com/okami/docker-php:octane-7.2.34
+docker push registry.cn-shenzhen.aliyuncs.com/okami/docker-php:octane-7.2.34
+docker rmi registry.cn-shenzhen.aliyuncs.com/okami/docker-php:octane-7.2.34
+
+docker tag sync402/docker-php:octane-7.2.34 registry.cn-shenzhen.aliyuncs.com/okami/docker-php:octane-7.2
+docker push registry.cn-shenzhen.aliyuncs.com/okami/docker-php:octane-7.2
+docker rmi registry.cn-shenzhen.aliyuncs.com/okami/docker-php:octane-7.2
+
+docker tag sync402/docker-php:octane-7.2.34 registry.cn-qingdao.aliyuncs.com/okami/docker-php:octane-7.2.34
+docker push registry.cn-qingdao.aliyuncs.com/okami/docker-php:octane-7.2.34
+docker rmi registry.cn-qingdao.aliyuncs.com/okami/docker-php:octane-7.2.34
+
+docker tag sync402/docker-php:octane-7.2.34 registry.cn-qingdao.aliyuncs.com/okami/docker-php:octane-7.2
+docker push registry.cn-qingdao.aliyuncs.com/okami/docker-php:octane-7.2
+docker rmi registry.cn-qingdao.aliyuncs.com/okami/docker-php:octane-7.2
+
 docker rmi sync402/docker-php:octane-7.2
 docker rmi sync402/docker-php:octane-7.2.34
 
@@ -74,6 +98,30 @@ docker rmi registry.cn-guangzhou.aliyuncs.com/okami/docker-php:web-7.2.34
 docker tag sync402/docker-php:web-7.2.34 registry.cn-guangzhou.aliyuncs.com/okami/docker-php:web-7.2
 docker push registry.cn-guangzhou.aliyuncs.com/okami/docker-php:web-7.2
 docker rmi registry.cn-guangzhou.aliyuncs.com/okami/docker-php:web-7.2
+
+docker tag sync402/docker-php:web-7.2.34 registry.cn-chengdu.aliyuncs.com/okami/docker-php:web-7.2.34
+docker push registry.cn-chengdu.aliyuncs.com/okami/docker-php:web-7.2.34
+docker rmi registry.cn-chengdu.aliyuncs.com/okami/docker-php:web-7.2.34
+
+docker tag sync402/docker-php:web-7.2.34 registry.cn-chengdu.aliyuncs.com/okami/docker-php:web-7.2
+docker push registry.cn-chengdu.aliyuncs.com/okami/docker-php:web-7.2
+docker rmi registry.cn-chengdu.aliyuncs.com/okami/docker-php:web-7.2
+
+docker tag sync402/docker-php:web-7.2.34 registry.cn-shenzhen.aliyuncs.com/okami/docker-php:web-7.2.34
+docker push registry.cn-shenzhen.aliyuncs.com/okami/docker-php:web-7.2.34
+docker rmi registry.cn-shenzhen.aliyuncs.com/okami/docker-php:web-7.2.34
+
+docker tag sync402/docker-php:web-7.2.34 registry.cn-shenzhen.aliyuncs.com/okami/docker-php:web-7.2
+docker push registry.cn-shenzhen.aliyuncs.com/okami/docker-php:web-7.2
+docker rmi registry.cn-shenzhen.aliyuncs.com/okami/docker-php:web-7.2
+
+docker tag sync402/docker-php:web-7.2.34 registry.cn-qingdao.aliyuncs.com/okami/docker-php:web-7.2.34
+docker push registry.cn-qingdao.aliyuncs.com/okami/docker-php:web-7.2.34
+docker rmi registry.cn-qingdao.aliyuncs.com/okami/docker-php:web-7.2.34
+
+docker tag sync402/docker-php:web-7.2.34 registry.cn-qingdao.aliyuncs.com/okami/docker-php:web-7.2
+docker push registry.cn-qingdao.aliyuncs.com/okami/docker-php:web-7.2
+docker rmi registry.cn-qingdao.aliyuncs.com/okami/docker-php:web-7.2
 
 docker rmi sync402/docker-php:web-7.2
 docker rmi sync402/docker-php:web-7.2.34

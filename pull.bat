@@ -2,8 +2,10 @@ docker login --username=ap3747a7y@aliyun.com --password=dehua2011 registry.cn-sh
 docker login --username=ap3747a7y@aliyun.com --password=dehua2011 registry.cn-beijing.aliyuncs.com
 docker login --username=ap3747a7y@aliyun.com --password=dehua2011 registry.cn-hangzhou.aliyuncs.com
 docker login --username=ap3747a7y@aliyun.com --password=dehua2011 registry.cn-guangzhou.aliyuncs.com
+docker login --username=ap3747a7y@aliyun.com --password=dehua2011 registry.cn-chengdu.aliyuncs.com
+docker login --username=ap3747a7y@aliyun.com --password=dehua2011 registry.cn-shenzhen.aliyuncs.com
+docker login --username=ap3747a7y@aliyun.com --password=dehua2011 registry.cn-qingdao.aliyuncs.com
 docker login --username=sync402 --password=dehua2011
-
 docker pull php:7.0.33-cli-alpine
 docker tag php:7.0.33-cli-alpine php:7.0-cli-alpine
 

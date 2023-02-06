@@ -15,8 +15,10 @@ class Docker
         'docker login --username=ap3747a7y@aliyun.com --password=dehua2011 registry.cn-beijing.aliyuncs.com',
         'docker login --username=ap3747a7y@aliyun.com --password=dehua2011 registry.cn-hangzhou.aliyuncs.com',
         'docker login --username=ap3747a7y@aliyun.com --password=dehua2011 registry.cn-guangzhou.aliyuncs.com',
+        'docker login --username=ap3747a7y@aliyun.com --password=dehua2011 registry.cn-chengdu.aliyuncs.com',
+        'docker login --username=ap3747a7y@aliyun.com --password=dehua2011 registry.cn-shenzhen.aliyuncs.com',
+        'docker login --username=ap3747a7y@aliyun.com --password=dehua2011 registry.cn-qingdao.aliyuncs.com',
         'docker login --username=sync402 --password=dehua2011',
-        ''
     ];
 
     protected array $push = [
@@ -30,6 +32,9 @@ class Docker
         'registry.cn-beijing.aliyuncs.com/okami/docker-php',
         'registry.cn-hangzhou.aliyuncs.com/okami/docker-php',
         'registry.cn-guangzhou.aliyuncs.com/okami/docker-php',
+        'registry.cn-chengdu.aliyuncs.com/okami/docker-php',
+        'registry.cn-shenzhen.aliyuncs.com/okami/docker-php',
+        'registry.cn-qingdao.aliyuncs.com/okami/docker-php',
     ];
 
     /**
