@@ -13,7 +13,7 @@ RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.ustc.edu.cn/g' /etc/apk/repositorie
 && apk del tzdata \
 && install-php-extensions intl ldap dba shmop calendar exif gettext pcntl sysvsem sysvshm sysvmsg \
 pdo_mysql mysqli bcmath sockets zip bz2 mcrypt redis opcache @composer \
-&& composer config -g repo.packagist composer https://mirrors.aliyun.com/composer/ \
+&& composer config -g repo.packagist composer https://mirrors.cloud.tencent.com/composer/ \
 && apk update && apk upgrade && apk add --no-cache bash bash-completion supervisor \
 && rm -rf /var/cache/apk/* /tmp/* /usr/share/man /var/lib/apt/lists/* \
 && mkdir -p /etc/supervisor.d/ && cat /usr/local/etc/php/php.ini-production > /usr/local/etc/php/php.ini
