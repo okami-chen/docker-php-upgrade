@@ -23,6 +23,10 @@ if [ -d "/var/www/html/bootstrap/cache" ];then
     chmod 777 -R /var/www/html/bootstrap/cache
 fi
 
+if [ -f "/var/www/html/artisan" ];then
+    chmod +x /var/www/html/artisan
+fi
+
 # For System
 echo "COLUMNS=2000" >> /root/.bashrc
 echo 'alias ll="ls -la"' >> /root/.bashrc
