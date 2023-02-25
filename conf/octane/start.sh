@@ -10,10 +10,9 @@ fi
 cat /usr/local/etc/php/php.ini-production > /usr/local/etc/php/php.ini
 cat /run/nginx/nginx.conf > /etc/nginx/nginx.conf
 
+# For Laravel
 mkdir /home/wwwlogs
 chown www-data:www-data /home/wwwlogs
-
-# For Laravel
 mkdir -p /var/www/html/storage/logs/supervisor
 mkdir -p /var/www/html/storage/app/
 mkdir -p /var/www/html/storage/framework/
