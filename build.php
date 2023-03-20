@@ -117,9 +117,9 @@ class Docker
     protected function buildImage($fullVerion, $buildType = 'cli')
     {
 
-        $pushVersion = $this->bigVersion . '.' . $this->smallVersion;
+        $lastestVersion = $this->bigVersion . '.' . $this->smallVersion;
 
-        $dockerFile = 'Dockerfile-'.$pushVersion.'-'.$buildType;
+        $dockerFile = 'Dockerfile-'.$lastestVersion.'-'.$buildType;
 
         if (!file_exists($dockerFile)) {
             return;
@@ -132,32 +132,31 @@ class Docker
         $this->push[] = 'docker push ' . $baseImage;
 
         if ($this->isLastVersion) {
-//            $this->cmds[] = 'docker rmi ' . $this->namespace . ':' . $buildType . '-' . $pushVersion;
-            $this->cmds[] = 'docker tag ' . $baseImage . ' ' . $this->namespace . ':' . $buildType . '-' . $pushVersion;
-            $this->cmds[] = 'docker push ' . $this->namespace . ':' . $buildType . '-' . $pushVersion;
-            $this->push[] = 'docker push ' . $this->namespace . ':' . $buildType . '-' . $pushVersion;
-            $this->push[] = 'docker rmi ' . $this->namespace . ':' . $buildType . '-' . $pushVersion;
+            $this->cmds[] = 'docker tag ' . $baseImage . ' ' . $this->namespace . ':' . $buildType . '-' . $lastestVersion;
+            $this->cmds[] = 'docker push ' . $this->namespace . ':' . $buildType . '-' . $lastestVersion;
+            $this->push[] = 'docker push ' . $this->namespace . ':' . $buildType . '-' . $lastestVersion;
+            $this->push[] = 'docker rmi ' . $this->namespace . ':' . $buildType . '-' . $lastestVersion;
         }
 
         $this->cmds[] = '';
 
         foreach ($this->namespaces as $namespace) {
 
-//            $this->cmds[] = 'docker rmi ' . $namespace . ':' . $buildType . '-' . $fullVerion;
             $this->cmds[] = 'docker tag ' . $baseImage . ' ' . $namespace . ':' . $buildType . '-' . $fullVerion;
             $this->cmds[] = 'docker push ' . $namespace . ':' . $buildType . '-' . $fullVerion;
             $this->cmds[] = 'docker rmi ' . $namespace . ':' . $buildType . '-' . $fullVerion;
 
             if ($this->isLastVersion) {
                 $this->cmds[] = '';
-//                $this->cmds[] = 'docker rmi ' . $namespace . ':' . $buildType . '-' . $pushVersion;
-                $this->cmds[] = 'docker tag ' . $baseImage . ' ' . $namespace . ':' . $buildType . '-' . $pushVersion;
-                $this->cmds[] = 'docker push ' . $namespace . ':' . $buildType . '-' . $pushVersion;
-                $this->cmds[] = 'docker rmi ' . $namespace . ':' . $buildType . '-' . $pushVersion;
+                $this->cmds[] = 'docker tag ' . $baseImage . ' ' . $namespace . ':' . $buildType . '-' . $lastestVersion;
+                $this->cmds[] = 'docker push ' . $namespace . ':' . $buildType . '-' . $lastestVersion;
+                $this->cmds[] = 'docker rmi ' . $namespace . ':' . $buildType . '-' . $lastestVersion;
             }
             $this->cmds[] = '';
         }
-        $this->cmds[] = 'docker rmi '.$this->namespace . ':' . $buildType . '-' . $pushVersion;
+        if ($this->isLastVersion) {
+            $this->cmds[] = 'docker rmi '.$this->namespace . ':' . $buildType . '-' . $lastestVersion;
+        }
         $this->cmds[] = 'docker rmi '.$baseImage;
 
         $this->cmds[] = '';
