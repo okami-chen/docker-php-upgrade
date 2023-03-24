@@ -1,0 +1,34 @@
+version: '1.0'
+name: pipeline-20230324
+displayName: pipeline-20230324
+triggers:
+  trigger: auto
+  push:
+    branches:
+      precise:
+        - v2
+  schedule:
+    - cron: '* * 5 * * ? *'
+stages:
+  - name: stage-cb64d75e
+    displayName: 任务编排
+    strategy: naturally
+    trigger: auto
+    executor: []
+    steps:
+      - step: build@docker
+        name: build_docker
+        displayName: 镜像构建
+        type: account
+        repository: registry.cn-shanghai.aliyuncs.com
+        username: ap3747a7y@aliyun.com
+        password: dehua2011
+        tag: ${GITEE_PIPELINE_BUILD_NUMBER}
+        dockerfile: ./Dockerfile
+        context: ''
+        artifacts: []
+        isCache: false
+        parameter: {}
+        notify: []
+        strategy:
+          retry: '0'
