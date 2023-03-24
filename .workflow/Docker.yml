@@ -1,6 +1,6 @@
 version: '1.0'
-name: pipeline-20230324
-displayName: pipeline-20230324
+name: Docker
+displayName: Docker
 triggers:
   trigger: auto
   push:
